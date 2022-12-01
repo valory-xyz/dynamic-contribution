@@ -136,6 +136,24 @@ correct like
 
 ##### tokenByIndex needs to be rechecked for implementation with `burn()`. Medium priority
 
+##### burn by approve. Low priority
+```
+like pseudocode:
+function burn(uint256 tokenId)
+    public
+  {
+    require(_isApprovedOrOwner(msg.sender, tokenId));
+    _burn(ownerOf(tokenId), tokenId);
+  }
+current version:
+function burn(uint256 tokenId)
+    public
+  {
+    require(_isOwner(msg.sender, tokenId));
+    _burn(ownerOf(tokenId), tokenId);
+  }
+```
+
 ##### tokenOfOwnerByIndex not implemented. Low priority/No issue
 ```
 https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
