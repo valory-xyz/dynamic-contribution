@@ -1,0 +1,70 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
++ Contract DynamicContribution (Most derived contract)
+  - From ERC721
+    - _burn(uint256) (internal)
+    - _mint(address,uint256) (internal)
+    - _safeMint(address,uint256) (internal)
+    - _safeMint(address,uint256,bytes) (internal)
+    - approve(address,uint256) (public)
+    - balanceOf(address) (public)
+    - constructor(string,string) (internal)
+    - ownerOf(uint256) (public)
+    - safeTransferFrom(address,address,uint256) (public)
+    - safeTransferFrom(address,address,uint256,bytes) (public)
+    - setApprovalForAll(address,bool) (public)
+    - supportsInterface(bytes4) (public)
+    - transferFrom(address,address,uint256) (public)
+  - From DynamicContribution
+    - burn(uint256) (external)
+    - changeOwner(address) (external)
+    - constructor(string,string,string) (public)
+    - exists(uint256) (external)
+    - mint() (external)
+    - mintFor(address) (external)
+    - setBaseURI(string) (external)
+    - tokenByIndex(uint256) (external)
+    - tokenURI(uint256) (public)
+
++ Contract IDynamicContribution (Most derived contract)
+  - From IDynamicContribution
+    - mint() (external)
+    - mintFor(address) (external)
+
++ Contract ReentrancyAttacker (Most derived contract)
+  - From ReentrancyAttacker
+    - badMint() (public)
+    - badMintFor() (public)
+    - constructor(address) (public)
+    - onERC721Received(address,address,uint256,bytes) (public)
+    - receive() (external)
+    - setAttackOnJustMint(bool) (external)
+
++ Contract ERC721
+  - From ERC721
+    - _burn(uint256) (internal)
+    - _mint(address,uint256) (internal)
+    - _safeMint(address,uint256) (internal)
+    - _safeMint(address,uint256,bytes) (internal)
+    - approve(address,uint256) (public)
+    - balanceOf(address) (public)
+    - constructor(string,string) (internal)
+    - ownerOf(uint256) (public)
+    - safeTransferFrom(address,address,uint256) (public)
+    - safeTransferFrom(address,address,uint256,bytes) (public)
+    - setApprovalForAll(address,bool) (public)
+    - supportsInterface(bytes4) (public)
+    - tokenURI(uint256) (public)
+    - transferFrom(address,address,uint256) (public)
+
++ Contract ERC721TokenReceiver
+  - From ERC721TokenReceiver
+    - onERC721Received(address,address,uint256,bytes) (external)
+
++ Contract LibString (Most derived contract)
+  - From LibString
+    - toString(uint256) (internal)
+
+. analyzed (6 contracts)

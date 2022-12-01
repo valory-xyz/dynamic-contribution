@@ -1,0 +1,62 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
+Contract DynamicContribution
++-----------------------------+-----------+
+|           Function          | Modifiers |
++-----------------------------+-----------+
+|           tokenURI          |     []    |
+|           ownerOf           |     []    |
+|          balanceOf          |     []    |
+|         constructor         |     []    |
+|           approve           |     []    |
+|      setApprovalForAll      |     []    |
+|         transferFrom        |     []    |
+|       safeTransferFrom      |     []    |
+|       safeTransferFrom      |     []    |
+|      supportsInterface      |     []    |
+|            _mint            |     []    |
+|            _burn            |     []    |
+|          _safeMint          |     []    |
+|          _safeMint          |     []    |
+|         constructor         |     []    |
+|         changeOwner         |     []    |
+|             mint            |     []    |
+|           mintFor           |     []    |
+|             burn            |     []    |
+|            exists           |     []    |
+|          setBaseURI         |     []    |
+|         tokenByIndex        |     []    |
+|           tokenURI          |     []    |
+| slitherConstructorVariables |     []    |
++-----------------------------+-----------+
+
+Contract IDynamicContribution
++----------+-----------+
+| Function | Modifiers |
++----------+-----------+
+|   mint   |     []    |
+| mintFor  |     []    |
++----------+-----------+
+
+Contract ReentrancyAttacker
++---------------------+-----------+
+|       Function      | Modifiers |
++---------------------+-----------+
+|   onERC721Received  |     []    |
+|     constructor     |     []    |
+|       receive       |     []    |
+|   onERC721Received  |     []    |
+| setAttackOnJustMint |     []    |
+|       badMint       |     []    |
+|      badMintFor     |     []    |
++---------------------+-----------+
+
+Contract LibString
++----------+-----------+
+| Function | Modifiers |
++----------+-----------+
+| toString |     []    |
++----------+-----------+
+. analyzed (6 contracts)

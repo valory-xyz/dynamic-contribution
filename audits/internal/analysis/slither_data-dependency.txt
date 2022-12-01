@@ -1,0 +1,2086 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
+Contract DynamicContribution
++------------------+---------------------------------------------+
+|     Variable     |                 Dependencies                |
++------------------+---------------------------------------------+
+|       name       |                  ['_name']                  |
+|      symbol      |                 ['_symbol']                 |
+|     _ownerOf     | ['to', 'msg.sender', 'account', '_ownerOf'] |
+|    _balanceOf    |                ['_balanceOf']               |
+|   getApproved    |          ['spender', 'getApproved']         |
+| isApprovedForAll |             ['isApprovedForAll']            |
+|      owner       |     ['newOwner', 'msg.sender', 'owner']     |
+|     baseURI      |       ['_baseURI', 'baseURI', 'bURI']       |
+|   totalSupply    |          ['totalSupply', 'tokenId']         |
+|     _locked      |                 ['_locked']                 |
++------------------+---------------------------------------------+
+
+Function constructor(string,string,string)
++---------------------------------+----------------+
+|             Variable            |  Dependencies  |
++---------------------------------+----------------+
+|              _name              |       []       |
+|             _symbol             |       []       |
+|             _baseURI            |       []       |
+|           ERC721.name           |       []       |
+|          ERC721.symbol          |       []       |
+|         ERC721._ownerOf         |       []       |
+|        ERC721._balanceOf        |       []       |
+|        ERC721.getApproved       |       []       |
+|     ERC721.isApprovedForAll     |       []       |
+|    DynamicContribution.owner    | ['msg.sender'] |
+|   DynamicContribution.baseURI   |  ['_baseURI']  |
+| DynamicContribution.totalSupply |       []       |
+|   DynamicContribution._locked   |       []       |
++---------------------------------+----------------+
+Function changeOwner(address)
++---------------------------------+-----------------------+
+|             Variable            |      Dependencies     |
++---------------------------------+-----------------------+
+|             newOwner            |           []          |
+|           ERC721.name           |           []          |
+|          ERC721.symbol          |           []          |
+|         ERC721._ownerOf         |           []          |
+|        ERC721._balanceOf        |           []          |
+|        ERC721.getApproved       |           []          |
+|     ERC721.isApprovedForAll     |           []          |
+|    DynamicContribution.owner    | ['newOwner', 'owner'] |
+|   DynamicContribution.baseURI   |           []          |
+| DynamicContribution.totalSupply |           []          |
+|   DynamicContribution._locked   |           []          |
++---------------------------------+-----------------------+
+Function mint()
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function mintFor(address)
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             account             |             []             |
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function burn(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|            tokenOwner           |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function exists(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|             tokenId             |        []       |
+|                                 |        []       |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function setBaseURI(string)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|               bURI              |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |  ['owner']   |
+|   DynamicContribution.baseURI   |   ['bURI']   |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function tokenByIndex(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|                id               |        []       |
+|             tokenId             |      ['id']     |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function tokenURI(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|                                 |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   | ['baseURI']  |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function slitherConstructorVariables()
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+
+Contract DynamicContribution
++------------------+---------------------------------------------+
+|     Variable     |                 Dependencies                |
++------------------+---------------------------------------------+
+|       name       |                  ['_name']                  |
+|      symbol      |                 ['_symbol']                 |
+|     _ownerOf     | ['to', 'msg.sender', 'account', '_ownerOf'] |
+|    _balanceOf    |                ['_balanceOf']               |
+|   getApproved    |          ['spender', 'getApproved']         |
+| isApprovedForAll |             ['isApprovedForAll']            |
+|      owner       |     ['newOwner', 'msg.sender', 'owner']     |
+|     baseURI      |       ['_baseURI', 'baseURI', 'bURI']       |
+|   totalSupply    |          ['totalSupply', 'tokenId']         |
+|     _locked      |                 ['_locked']                 |
++------------------+---------------------------------------------+
+
+Function constructor(string,string,string)
++---------------------------------+----------------+
+|             Variable            |  Dependencies  |
++---------------------------------+----------------+
+|              _name              |       []       |
+|             _symbol             |       []       |
+|             _baseURI            |       []       |
+|           ERC721.name           |       []       |
+|          ERC721.symbol          |       []       |
+|         ERC721._ownerOf         |       []       |
+|        ERC721._balanceOf        |       []       |
+|        ERC721.getApproved       |       []       |
+|     ERC721.isApprovedForAll     |       []       |
+|    DynamicContribution.owner    | ['msg.sender'] |
+|   DynamicContribution.baseURI   |  ['_baseURI']  |
+| DynamicContribution.totalSupply |       []       |
+|   DynamicContribution._locked   |       []       |
++---------------------------------+----------------+
+Function changeOwner(address)
++---------------------------------+-----------------------+
+|             Variable            |      Dependencies     |
++---------------------------------+-----------------------+
+|             newOwner            |           []          |
+|           ERC721.name           |           []          |
+|          ERC721.symbol          |           []          |
+|         ERC721._ownerOf         |           []          |
+|        ERC721._balanceOf        |           []          |
+|        ERC721.getApproved       |           []          |
+|     ERC721.isApprovedForAll     |           []          |
+|    DynamicContribution.owner    | ['newOwner', 'owner'] |
+|   DynamicContribution.baseURI   |           []          |
+| DynamicContribution.totalSupply |           []          |
+|   DynamicContribution._locked   |           []          |
++---------------------------------+-----------------------+
+Function mint()
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function mintFor(address)
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             account             |             []             |
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function burn(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|            tokenOwner           |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function exists(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|             tokenId             |        []       |
+|                                 |        []       |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function setBaseURI(string)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|               bURI              |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |  ['owner']   |
+|   DynamicContribution.baseURI   |   ['bURI']   |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function tokenByIndex(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|                id               |        []       |
+|             tokenId             |      ['id']     |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function tokenURI(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|                                 |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   | ['baseURI']  |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function slitherConstructorVariables()
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Contract IDynamicContribution
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
++----------+--------------+
+
+Function mint()
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| tokenId  |      []      |
++----------+--------------+
+Function mintFor(address)
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| account  |      []      |
+| tokenId  |      []      |
++----------+--------------+
+
+Contract DynamicContribution
++------------------+---------------------------------------------+
+|     Variable     |                 Dependencies                |
++------------------+---------------------------------------------+
+|       name       |                  ['_name']                  |
+|      symbol      |                 ['_symbol']                 |
+|     _ownerOf     | ['to', 'msg.sender', 'account', '_ownerOf'] |
+|    _balanceOf    |                ['_balanceOf']               |
+|   getApproved    |          ['spender', 'getApproved']         |
+| isApprovedForAll |             ['isApprovedForAll']            |
+|      owner       |     ['newOwner', 'msg.sender', 'owner']     |
+|     baseURI      |       ['_baseURI', 'baseURI', 'bURI']       |
+|   totalSupply    |          ['totalSupply', 'tokenId']         |
+|     _locked      |                 ['_locked']                 |
++------------------+---------------------------------------------+
+
+Function constructor(string,string,string)
++---------------------------------+----------------+
+|             Variable            |  Dependencies  |
++---------------------------------+----------------+
+|              _name              |       []       |
+|             _symbol             |       []       |
+|             _baseURI            |       []       |
+|           ERC721.name           |       []       |
+|          ERC721.symbol          |       []       |
+|         ERC721._ownerOf         |       []       |
+|        ERC721._balanceOf        |       []       |
+|        ERC721.getApproved       |       []       |
+|     ERC721.isApprovedForAll     |       []       |
+|    DynamicContribution.owner    | ['msg.sender'] |
+|   DynamicContribution.baseURI   |  ['_baseURI']  |
+| DynamicContribution.totalSupply |       []       |
+|   DynamicContribution._locked   |       []       |
++---------------------------------+----------------+
+Function changeOwner(address)
++---------------------------------+-----------------------+
+|             Variable            |      Dependencies     |
++---------------------------------+-----------------------+
+|             newOwner            |           []          |
+|           ERC721.name           |           []          |
+|          ERC721.symbol          |           []          |
+|         ERC721._ownerOf         |           []          |
+|        ERC721._balanceOf        |           []          |
+|        ERC721.getApproved       |           []          |
+|     ERC721.isApprovedForAll     |           []          |
+|    DynamicContribution.owner    | ['newOwner', 'owner'] |
+|   DynamicContribution.baseURI   |           []          |
+| DynamicContribution.totalSupply |           []          |
+|   DynamicContribution._locked   |           []          |
++---------------------------------+-----------------------+
+Function mint()
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function mintFor(address)
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             account             |             []             |
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function burn(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|            tokenOwner           |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function exists(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|             tokenId             |        []       |
+|                                 |        []       |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function setBaseURI(string)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|               bURI              |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |  ['owner']   |
+|   DynamicContribution.baseURI   |   ['bURI']   |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function tokenByIndex(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|                id               |        []       |
+|             tokenId             |      ['id']     |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function tokenURI(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|                                 |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   | ['baseURI']  |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function slitherConstructorVariables()
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Contract IDynamicContribution
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
++----------+--------------+
+
+Function mint()
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| tokenId  |      []      |
++----------+--------------+
+Function mintFor(address)
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| account  |      []      |
+| tokenId  |      []      |
++----------+--------------+
+Contract ReentrancyAttacker
++---------------------+-------------------------------------------------+
+|       Variable      |                   Dependencies                  |
++---------------------+-------------------------------------------------+
+| dynamicContribution | ['_dynamicContribution', 'dynamicContribution'] |
+|      badAction      |                        []                       |
+|       justMint      |            ['_justMint', 'justMint']            |
++---------------------+-------------------------------------------------+
+
+Function constructor(address)
++----------------------------------------+--------------------------+
+|                Variable                |       Dependencies       |
++----------------------------------------+--------------------------+
+|          _dynamicContribution          |            []            |
+| ReentrancyAttacker.dynamicContribution | ['_dynamicContribution'] |
+|      ReentrancyAttacker.badAction      |            []            |
+|      ReentrancyAttacker.justMint       |            []            |
++----------------------------------------+--------------------------+
+Function receive()
++----------------------------------------+--------------+
+|                Variable                | Dependencies |
++----------------------------------------+--------------+
+| ReentrancyAttacker.dynamicContribution |      []      |
+|      ReentrancyAttacker.badAction      |      []      |
+|      ReentrancyAttacker.justMint       |      []      |
++----------------------------------------+--------------+
+Function onERC721Received(address,address,uint256,bytes)
++----------------------------------------+--------------+
+|                Variable                | Dependencies |
++----------------------------------------+--------------+
+|                                        |      []      |
+|                tokenId                 |      []      |
+| ReentrancyAttacker.dynamicContribution |      []      |
+|      ReentrancyAttacker.badAction      |      []      |
+|      ReentrancyAttacker.justMint       | ['justMint'] |
++----------------------------------------+--------------+
+Function setAttackOnJustMint(bool)
++----------------------------------------+---------------+
+|                Variable                |  Dependencies |
++----------------------------------------+---------------+
+|               _justMint                |       []      |
+| ReentrancyAttacker.dynamicContribution |       []      |
+|      ReentrancyAttacker.badAction      |       []      |
+|      ReentrancyAttacker.justMint       | ['_justMint'] |
++----------------------------------------+---------------+
+Function badMint()
++----------------------------------------+-------------------------+
+|                Variable                |       Dependencies      |
++----------------------------------------+-------------------------+
+|                tokenId                 | ['dynamicContribution'] |
+| ReentrancyAttacker.dynamicContribution | ['dynamicContribution'] |
+|      ReentrancyAttacker.badAction      |            []           |
+|      ReentrancyAttacker.justMint       |            []           |
++----------------------------------------+-------------------------+
+Function badMintFor()
++----------------------------------------+---------------------------------+
+|                Variable                |           Dependencies          |
++----------------------------------------+---------------------------------+
+|                tokenId                 | ['this', 'dynamicContribution'] |
+| ReentrancyAttacker.dynamicContribution |     ['dynamicContribution']     |
+|      ReentrancyAttacker.badAction      |                []               |
+|      ReentrancyAttacker.justMint       |                []               |
++----------------------------------------+---------------------------------+
+
+Contract DynamicContribution
++------------------+---------------------------------------------+
+|     Variable     |                 Dependencies                |
++------------------+---------------------------------------------+
+|       name       |                  ['_name']                  |
+|      symbol      |                 ['_symbol']                 |
+|     _ownerOf     | ['to', 'msg.sender', 'account', '_ownerOf'] |
+|    _balanceOf    |                ['_balanceOf']               |
+|   getApproved    |          ['spender', 'getApproved']         |
+| isApprovedForAll |             ['isApprovedForAll']            |
+|      owner       |     ['newOwner', 'msg.sender', 'owner']     |
+|     baseURI      |       ['_baseURI', 'baseURI', 'bURI']       |
+|   totalSupply    |          ['totalSupply', 'tokenId']         |
+|     _locked      |                 ['_locked']                 |
++------------------+---------------------------------------------+
+
+Function constructor(string,string,string)
++---------------------------------+----------------+
+|             Variable            |  Dependencies  |
++---------------------------------+----------------+
+|              _name              |       []       |
+|             _symbol             |       []       |
+|             _baseURI            |       []       |
+|           ERC721.name           |       []       |
+|          ERC721.symbol          |       []       |
+|         ERC721._ownerOf         |       []       |
+|        ERC721._balanceOf        |       []       |
+|        ERC721.getApproved       |       []       |
+|     ERC721.isApprovedForAll     |       []       |
+|    DynamicContribution.owner    | ['msg.sender'] |
+|   DynamicContribution.baseURI   |  ['_baseURI']  |
+| DynamicContribution.totalSupply |       []       |
+|   DynamicContribution._locked   |       []       |
++---------------------------------+----------------+
+Function changeOwner(address)
++---------------------------------+-----------------------+
+|             Variable            |      Dependencies     |
++---------------------------------+-----------------------+
+|             newOwner            |           []          |
+|           ERC721.name           |           []          |
+|          ERC721.symbol          |           []          |
+|         ERC721._ownerOf         |           []          |
+|        ERC721._balanceOf        |           []          |
+|        ERC721.getApproved       |           []          |
+|     ERC721.isApprovedForAll     |           []          |
+|    DynamicContribution.owner    | ['newOwner', 'owner'] |
+|   DynamicContribution.baseURI   |           []          |
+| DynamicContribution.totalSupply |           []          |
+|   DynamicContribution._locked   |           []          |
++---------------------------------+-----------------------+
+Function mint()
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function mintFor(address)
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             account             |             []             |
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function burn(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|            tokenOwner           |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function exists(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|             tokenId             |        []       |
+|                                 |        []       |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function setBaseURI(string)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|               bURI              |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |  ['owner']   |
+|   DynamicContribution.baseURI   |   ['bURI']   |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function tokenByIndex(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|                id               |        []       |
+|             tokenId             |      ['id']     |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function tokenURI(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|                                 |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   | ['baseURI']  |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function slitherConstructorVariables()
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Contract IDynamicContribution
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
++----------+--------------+
+
+Function mint()
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| tokenId  |      []      |
++----------+--------------+
+Function mintFor(address)
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| account  |      []      |
+| tokenId  |      []      |
++----------+--------------+
+Contract ReentrancyAttacker
++---------------------+-------------------------------------------------+
+|       Variable      |                   Dependencies                  |
++---------------------+-------------------------------------------------+
+| dynamicContribution | ['_dynamicContribution', 'dynamicContribution'] |
+|      badAction      |                        []                       |
+|       justMint      |            ['_justMint', 'justMint']            |
++---------------------+-------------------------------------------------+
+
+Function constructor(address)
++----------------------------------------+--------------------------+
+|                Variable                |       Dependencies       |
++----------------------------------------+--------------------------+
+|          _dynamicContribution          |            []            |
+| ReentrancyAttacker.dynamicContribution | ['_dynamicContribution'] |
+|      ReentrancyAttacker.badAction      |            []            |
+|      ReentrancyAttacker.justMint       |            []            |
++----------------------------------------+--------------------------+
+Function receive()
++----------------------------------------+--------------+
+|                Variable                | Dependencies |
++----------------------------------------+--------------+
+| ReentrancyAttacker.dynamicContribution |      []      |
+|      ReentrancyAttacker.badAction      |      []      |
+|      ReentrancyAttacker.justMint       |      []      |
++----------------------------------------+--------------+
+Function onERC721Received(address,address,uint256,bytes)
++----------------------------------------+--------------+
+|                Variable                | Dependencies |
++----------------------------------------+--------------+
+|                                        |      []      |
+|                tokenId                 |      []      |
+| ReentrancyAttacker.dynamicContribution |      []      |
+|      ReentrancyAttacker.badAction      |      []      |
+|      ReentrancyAttacker.justMint       | ['justMint'] |
++----------------------------------------+--------------+
+Function setAttackOnJustMint(bool)
++----------------------------------------+---------------+
+|                Variable                |  Dependencies |
++----------------------------------------+---------------+
+|               _justMint                |       []      |
+| ReentrancyAttacker.dynamicContribution |       []      |
+|      ReentrancyAttacker.badAction      |       []      |
+|      ReentrancyAttacker.justMint       | ['_justMint'] |
++----------------------------------------+---------------+
+Function badMint()
++----------------------------------------+-------------------------+
+|                Variable                |       Dependencies      |
++----------------------------------------+-------------------------+
+|                tokenId                 | ['dynamicContribution'] |
+| ReentrancyAttacker.dynamicContribution | ['dynamicContribution'] |
+|      ReentrancyAttacker.badAction      |            []           |
+|      ReentrancyAttacker.justMint       |            []           |
++----------------------------------------+-------------------------+
+Function badMintFor()
++----------------------------------------+---------------------------------+
+|                Variable                |           Dependencies          |
++----------------------------------------+---------------------------------+
+|                tokenId                 | ['this', 'dynamicContribution'] |
+| ReentrancyAttacker.dynamicContribution |     ['dynamicContribution']     |
+|      ReentrancyAttacker.badAction      |                []               |
+|      ReentrancyAttacker.justMint       |                []               |
++----------------------------------------+---------------------------------+
+Contract ERC721
++------------------+----------------------------+
+|     Variable     |        Dependencies        |
++------------------+----------------------------+
+|       name       |         ['_name']          |
+|      symbol      |        ['_symbol']         |
+|     _ownerOf     |     ['to', '_ownerOf']     |
+|    _balanceOf    |       ['_balanceOf']       |
+|   getApproved    | ['spender', 'getApproved'] |
+| isApprovedForAll |    ['isApprovedForAll']    |
++------------------+----------------------------+
+
+Function tokenURI(uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            id           |      []      |
+|                         |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function ownerOf(uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            id           |      []      |
+|          owner          | ['_ownerOf'] |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     | ['_ownerOf'] |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function balanceOf(address)
++-------------------------+----------------+
+|         Variable        |  Dependencies  |
++-------------------------+----------------+
+|          owner          |       []       |
+|                         |       []       |
+|       ERC721.name       |       []       |
+|      ERC721.symbol      |       []       |
+|     ERC721._ownerOf     |       []       |
+|    ERC721._balanceOf    | ['_balanceOf'] |
+|    ERC721.getApproved   |       []       |
+| ERC721.isApprovedForAll |       []       |
++-------------------------+----------------+
+Function constructor(string,string)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|          _name          |  ['_name']   |
+|         _symbol         | ['_symbol']  |
+|       ERC721.name       |  ['_name']   |
+|      ERC721.symbol      | ['_symbol']  |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function approve(address,uint256)
++-------------------------+----------------------------+
+|         Variable        |        Dependencies        |
++-------------------------+----------------------------+
+|         spender         |             []             |
+|            id           |             []             |
+|          owner          |        ['_ownerOf']        |
+|       ERC721.name       |             []             |
+|      ERC721.symbol      |             []             |
+|     ERC721._ownerOf     |        ['_ownerOf']        |
+|    ERC721._balanceOf    |             []             |
+|    ERC721.getApproved   | ['spender', 'getApproved'] |
+| ERC721.isApprovedForAll |    ['isApprovedForAll']    |
++-------------------------+----------------------------+
+Function setApprovalForAll(address,bool)
++-------------------------+----------------------+
+|         Variable        |     Dependencies     |
++-------------------------+----------------------+
+|         operator        |          []          |
+|         approved        |          []          |
+|       ERC721.name       |          []          |
+|      ERC721.symbol      |          []          |
+|     ERC721._ownerOf     |          []          |
+|    ERC721._balanceOf    |          []          |
+|    ERC721.getApproved   |          []          |
+| ERC721.isApprovedForAll | ['isApprovedForAll'] |
++-------------------------+----------------------+
+Function transferFrom(address,address,uint256)
++-------------------------+----------------------+
+|         Variable        |     Dependencies     |
++-------------------------+----------------------+
+|           from          |       ['from']       |
+|            to           |        ['to']        |
+|            id           |        ['id']        |
+|       ERC721.name       |          []          |
+|      ERC721.symbol      |          []          |
+|     ERC721._ownerOf     |  ['to', '_ownerOf']  |
+|    ERC721._balanceOf    |    ['_balanceOf']    |
+|    ERC721.getApproved   |   ['getApproved']    |
+| ERC721.isApprovedForAll | ['isApprovedForAll'] |
++-------------------------+----------------------+
+Function safeTransferFrom(address,address,uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|           from          |      []      |
+|            to           |      []      |
+|            id           |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function safeTransferFrom(address,address,uint256,bytes)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|           from          |      []      |
+|            to           |      []      |
+|            id           |      []      |
+|           data          |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function supportsInterface(bytes4)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|       interfaceId       |      []      |
+|                         |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function _mint(address,uint256)
++-------------------------+--------------------+
+|         Variable        |    Dependencies    |
++-------------------------+--------------------+
+|            to           |       ['to']       |
+|            id           |       ['id']       |
+|       ERC721.name       |         []         |
+|      ERC721.symbol      |         []         |
+|     ERC721._ownerOf     | ['to', '_ownerOf'] |
+|    ERC721._balanceOf    |   ['_balanceOf']   |
+|    ERC721.getApproved   |         []         |
+| ERC721.isApprovedForAll |         []         |
++-------------------------+--------------------+
+Function _burn(uint256)
++-------------------------+-----------------+
+|         Variable        |   Dependencies  |
++-------------------------+-----------------+
+|            id           |        []       |
+|          owner          |   ['_ownerOf']  |
+|       ERC721.name       |        []       |
+|      ERC721.symbol      |        []       |
+|     ERC721._ownerOf     |   ['_ownerOf']  |
+|    ERC721._balanceOf    |  ['_balanceOf'] |
+|    ERC721.getApproved   | ['getApproved'] |
+| ERC721.isApprovedForAll |        []       |
++-------------------------+-----------------+
+Function _safeMint(address,uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            to           |      []      |
+|            id           |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function _safeMint(address,uint256,bytes)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            to           |      []      |
+|            id           |      []      |
+|           data          |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+
+Contract DynamicContribution
++------------------+---------------------------------------------+
+|     Variable     |                 Dependencies                |
++------------------+---------------------------------------------+
+|       name       |                  ['_name']                  |
+|      symbol      |                 ['_symbol']                 |
+|     _ownerOf     | ['to', 'msg.sender', 'account', '_ownerOf'] |
+|    _balanceOf    |                ['_balanceOf']               |
+|   getApproved    |          ['spender', 'getApproved']         |
+| isApprovedForAll |             ['isApprovedForAll']            |
+|      owner       |     ['newOwner', 'msg.sender', 'owner']     |
+|     baseURI      |       ['_baseURI', 'baseURI', 'bURI']       |
+|   totalSupply    |          ['totalSupply', 'tokenId']         |
+|     _locked      |                 ['_locked']                 |
++------------------+---------------------------------------------+
+
+Function constructor(string,string,string)
++---------------------------------+----------------+
+|             Variable            |  Dependencies  |
++---------------------------------+----------------+
+|              _name              |       []       |
+|             _symbol             |       []       |
+|             _baseURI            |       []       |
+|           ERC721.name           |       []       |
+|          ERC721.symbol          |       []       |
+|         ERC721._ownerOf         |       []       |
+|        ERC721._balanceOf        |       []       |
+|        ERC721.getApproved       |       []       |
+|     ERC721.isApprovedForAll     |       []       |
+|    DynamicContribution.owner    | ['msg.sender'] |
+|   DynamicContribution.baseURI   |  ['_baseURI']  |
+| DynamicContribution.totalSupply |       []       |
+|   DynamicContribution._locked   |       []       |
++---------------------------------+----------------+
+Function changeOwner(address)
++---------------------------------+-----------------------+
+|             Variable            |      Dependencies     |
++---------------------------------+-----------------------+
+|             newOwner            |           []          |
+|           ERC721.name           |           []          |
+|          ERC721.symbol          |           []          |
+|         ERC721._ownerOf         |           []          |
+|        ERC721._balanceOf        |           []          |
+|        ERC721.getApproved       |           []          |
+|     ERC721.isApprovedForAll     |           []          |
+|    DynamicContribution.owner    | ['newOwner', 'owner'] |
+|   DynamicContribution.baseURI   |           []          |
+| DynamicContribution.totalSupply |           []          |
+|   DynamicContribution._locked   |           []          |
++---------------------------------+-----------------------+
+Function mint()
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function mintFor(address)
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             account             |             []             |
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function burn(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|            tokenOwner           |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function exists(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|             tokenId             |        []       |
+|                                 |        []       |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function setBaseURI(string)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|               bURI              |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |  ['owner']   |
+|   DynamicContribution.baseURI   |   ['bURI']   |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function tokenByIndex(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|                id               |        []       |
+|             tokenId             |      ['id']     |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function tokenURI(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|                                 |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   | ['baseURI']  |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function slitherConstructorVariables()
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Contract IDynamicContribution
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
++----------+--------------+
+
+Function mint()
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| tokenId  |      []      |
++----------+--------------+
+Function mintFor(address)
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| account  |      []      |
+| tokenId  |      []      |
++----------+--------------+
+Contract ReentrancyAttacker
++---------------------+-------------------------------------------------+
+|       Variable      |                   Dependencies                  |
++---------------------+-------------------------------------------------+
+| dynamicContribution | ['_dynamicContribution', 'dynamicContribution'] |
+|      badAction      |                        []                       |
+|       justMint      |            ['_justMint', 'justMint']            |
++---------------------+-------------------------------------------------+
+
+Function constructor(address)
++----------------------------------------+--------------------------+
+|                Variable                |       Dependencies       |
++----------------------------------------+--------------------------+
+|          _dynamicContribution          |            []            |
+| ReentrancyAttacker.dynamicContribution | ['_dynamicContribution'] |
+|      ReentrancyAttacker.badAction      |            []            |
+|      ReentrancyAttacker.justMint       |            []            |
++----------------------------------------+--------------------------+
+Function receive()
++----------------------------------------+--------------+
+|                Variable                | Dependencies |
++----------------------------------------+--------------+
+| ReentrancyAttacker.dynamicContribution |      []      |
+|      ReentrancyAttacker.badAction      |      []      |
+|      ReentrancyAttacker.justMint       |      []      |
++----------------------------------------+--------------+
+Function onERC721Received(address,address,uint256,bytes)
++----------------------------------------+--------------+
+|                Variable                | Dependencies |
++----------------------------------------+--------------+
+|                                        |      []      |
+|                tokenId                 |      []      |
+| ReentrancyAttacker.dynamicContribution |      []      |
+|      ReentrancyAttacker.badAction      |      []      |
+|      ReentrancyAttacker.justMint       | ['justMint'] |
++----------------------------------------+--------------+
+Function setAttackOnJustMint(bool)
++----------------------------------------+---------------+
+|                Variable                |  Dependencies |
++----------------------------------------+---------------+
+|               _justMint                |       []      |
+| ReentrancyAttacker.dynamicContribution |       []      |
+|      ReentrancyAttacker.badAction      |       []      |
+|      ReentrancyAttacker.justMint       | ['_justMint'] |
++----------------------------------------+---------------+
+Function badMint()
++----------------------------------------+-------------------------+
+|                Variable                |       Dependencies      |
++----------------------------------------+-------------------------+
+|                tokenId                 | ['dynamicContribution'] |
+| ReentrancyAttacker.dynamicContribution | ['dynamicContribution'] |
+|      ReentrancyAttacker.badAction      |            []           |
+|      ReentrancyAttacker.justMint       |            []           |
++----------------------------------------+-------------------------+
+Function badMintFor()
++----------------------------------------+---------------------------------+
+|                Variable                |           Dependencies          |
++----------------------------------------+---------------------------------+
+|                tokenId                 | ['this', 'dynamicContribution'] |
+| ReentrancyAttacker.dynamicContribution |     ['dynamicContribution']     |
+|      ReentrancyAttacker.badAction      |                []               |
+|      ReentrancyAttacker.justMint       |                []               |
++----------------------------------------+---------------------------------+
+Contract ERC721
++------------------+----------------------------+
+|     Variable     |        Dependencies        |
++------------------+----------------------------+
+|       name       |         ['_name']          |
+|      symbol      |        ['_symbol']         |
+|     _ownerOf     |     ['to', '_ownerOf']     |
+|    _balanceOf    |       ['_balanceOf']       |
+|   getApproved    | ['spender', 'getApproved'] |
+| isApprovedForAll |    ['isApprovedForAll']    |
++------------------+----------------------------+
+
+Function tokenURI(uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            id           |      []      |
+|                         |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function ownerOf(uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            id           |      []      |
+|          owner          | ['_ownerOf'] |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     | ['_ownerOf'] |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function balanceOf(address)
++-------------------------+----------------+
+|         Variable        |  Dependencies  |
++-------------------------+----------------+
+|          owner          |       []       |
+|                         |       []       |
+|       ERC721.name       |       []       |
+|      ERC721.symbol      |       []       |
+|     ERC721._ownerOf     |       []       |
+|    ERC721._balanceOf    | ['_balanceOf'] |
+|    ERC721.getApproved   |       []       |
+| ERC721.isApprovedForAll |       []       |
++-------------------------+----------------+
+Function constructor(string,string)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|          _name          |  ['_name']   |
+|         _symbol         | ['_symbol']  |
+|       ERC721.name       |  ['_name']   |
+|      ERC721.symbol      | ['_symbol']  |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function approve(address,uint256)
++-------------------------+----------------------------+
+|         Variable        |        Dependencies        |
++-------------------------+----------------------------+
+|         spender         |             []             |
+|            id           |             []             |
+|          owner          |        ['_ownerOf']        |
+|       ERC721.name       |             []             |
+|      ERC721.symbol      |             []             |
+|     ERC721._ownerOf     |        ['_ownerOf']        |
+|    ERC721._balanceOf    |             []             |
+|    ERC721.getApproved   | ['spender', 'getApproved'] |
+| ERC721.isApprovedForAll |    ['isApprovedForAll']    |
++-------------------------+----------------------------+
+Function setApprovalForAll(address,bool)
++-------------------------+----------------------+
+|         Variable        |     Dependencies     |
++-------------------------+----------------------+
+|         operator        |          []          |
+|         approved        |          []          |
+|       ERC721.name       |          []          |
+|      ERC721.symbol      |          []          |
+|     ERC721._ownerOf     |          []          |
+|    ERC721._balanceOf    |          []          |
+|    ERC721.getApproved   |          []          |
+| ERC721.isApprovedForAll | ['isApprovedForAll'] |
++-------------------------+----------------------+
+Function transferFrom(address,address,uint256)
++-------------------------+----------------------+
+|         Variable        |     Dependencies     |
++-------------------------+----------------------+
+|           from          |       ['from']       |
+|            to           |        ['to']        |
+|            id           |        ['id']        |
+|       ERC721.name       |          []          |
+|      ERC721.symbol      |          []          |
+|     ERC721._ownerOf     |  ['to', '_ownerOf']  |
+|    ERC721._balanceOf    |    ['_balanceOf']    |
+|    ERC721.getApproved   |   ['getApproved']    |
+| ERC721.isApprovedForAll | ['isApprovedForAll'] |
++-------------------------+----------------------+
+Function safeTransferFrom(address,address,uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|           from          |      []      |
+|            to           |      []      |
+|            id           |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function safeTransferFrom(address,address,uint256,bytes)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|           from          |      []      |
+|            to           |      []      |
+|            id           |      []      |
+|           data          |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function supportsInterface(bytes4)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|       interfaceId       |      []      |
+|                         |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function _mint(address,uint256)
++-------------------------+--------------------+
+|         Variable        |    Dependencies    |
++-------------------------+--------------------+
+|            to           |       ['to']       |
+|            id           |       ['id']       |
+|       ERC721.name       |         []         |
+|      ERC721.symbol      |         []         |
+|     ERC721._ownerOf     | ['to', '_ownerOf'] |
+|    ERC721._balanceOf    |   ['_balanceOf']   |
+|    ERC721.getApproved   |         []         |
+| ERC721.isApprovedForAll |         []         |
++-------------------------+--------------------+
+Function _burn(uint256)
++-------------------------+-----------------+
+|         Variable        |   Dependencies  |
++-------------------------+-----------------+
+|            id           |        []       |
+|          owner          |   ['_ownerOf']  |
+|       ERC721.name       |        []       |
+|      ERC721.symbol      |        []       |
+|     ERC721._ownerOf     |   ['_ownerOf']  |
+|    ERC721._balanceOf    |  ['_balanceOf'] |
+|    ERC721.getApproved   | ['getApproved'] |
+| ERC721.isApprovedForAll |        []       |
++-------------------------+-----------------+
+Function _safeMint(address,uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            to           |      []      |
+|            id           |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function _safeMint(address,uint256,bytes)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            to           |      []      |
+|            id           |      []      |
+|           data          |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Contract ERC721TokenReceiver
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
++----------+--------------+
+
+Function onERC721Received(address,address,uint256,bytes)
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+|          |      []      |
++----------+--------------+
+
+Contract DynamicContribution
++------------------+---------------------------------------------+
+|     Variable     |                 Dependencies                |
++------------------+---------------------------------------------+
+|       name       |                  ['_name']                  |
+|      symbol      |                 ['_symbol']                 |
+|     _ownerOf     | ['to', 'msg.sender', 'account', '_ownerOf'] |
+|    _balanceOf    |                ['_balanceOf']               |
+|   getApproved    |          ['spender', 'getApproved']         |
+| isApprovedForAll |             ['isApprovedForAll']            |
+|      owner       |     ['newOwner', 'msg.sender', 'owner']     |
+|     baseURI      |       ['_baseURI', 'baseURI', 'bURI']       |
+|   totalSupply    |          ['totalSupply', 'tokenId']         |
+|     _locked      |                 ['_locked']                 |
++------------------+---------------------------------------------+
+
+Function constructor(string,string,string)
++---------------------------------+----------------+
+|             Variable            |  Dependencies  |
++---------------------------------+----------------+
+|              _name              |       []       |
+|             _symbol             |       []       |
+|             _baseURI            |       []       |
+|           ERC721.name           |       []       |
+|          ERC721.symbol          |       []       |
+|         ERC721._ownerOf         |       []       |
+|        ERC721._balanceOf        |       []       |
+|        ERC721.getApproved       |       []       |
+|     ERC721.isApprovedForAll     |       []       |
+|    DynamicContribution.owner    | ['msg.sender'] |
+|   DynamicContribution.baseURI   |  ['_baseURI']  |
+| DynamicContribution.totalSupply |       []       |
+|   DynamicContribution._locked   |       []       |
++---------------------------------+----------------+
+Function changeOwner(address)
++---------------------------------+-----------------------+
+|             Variable            |      Dependencies     |
++---------------------------------+-----------------------+
+|             newOwner            |           []          |
+|           ERC721.name           |           []          |
+|          ERC721.symbol          |           []          |
+|         ERC721._ownerOf         |           []          |
+|        ERC721._balanceOf        |           []          |
+|        ERC721.getApproved       |           []          |
+|     ERC721.isApprovedForAll     |           []          |
+|    DynamicContribution.owner    | ['newOwner', 'owner'] |
+|   DynamicContribution.baseURI   |           []          |
+| DynamicContribution.totalSupply |           []          |
+|   DynamicContribution._locked   |           []          |
++---------------------------------+-----------------------+
+Function mint()
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function mintFor(address)
++---------------------------------+----------------------------+
+|             Variable            |        Dependencies        |
++---------------------------------+----------------------------+
+|             account             |             []             |
+|             tokenId             | ['totalSupply', 'tokenId'] |
+|           ERC721.name           |             []             |
+|          ERC721.symbol          |             []             |
+|         ERC721._ownerOf         |             []             |
+|        ERC721._balanceOf        |             []             |
+|        ERC721.getApproved       |             []             |
+|     ERC721.isApprovedForAll     |             []             |
+|    DynamicContribution.owner    |             []             |
+|   DynamicContribution.baseURI   |             []             |
+| DynamicContribution.totalSupply | ['totalSupply', 'tokenId'] |
+|   DynamicContribution._locked   |        ['_locked']         |
++---------------------------------+----------------------------+
+Function burn(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|            tokenOwner           |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function exists(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|             tokenId             |        []       |
+|                                 |        []       |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function setBaseURI(string)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|               bURI              |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |  ['owner']   |
+|   DynamicContribution.baseURI   |   ['bURI']   |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function tokenByIndex(uint256)
++---------------------------------+-----------------+
+|             Variable            |   Dependencies  |
++---------------------------------+-----------------+
+|                id               |        []       |
+|             tokenId             |      ['id']     |
+|           ERC721.name           |        []       |
+|          ERC721.symbol          |        []       |
+|         ERC721._ownerOf         |        []       |
+|        ERC721._balanceOf        |        []       |
+|        ERC721.getApproved       |        []       |
+|     ERC721.isApprovedForAll     |        []       |
+|    DynamicContribution.owner    |        []       |
+|   DynamicContribution.baseURI   |        []       |
+| DynamicContribution.totalSupply | ['totalSupply'] |
+|   DynamicContribution._locked   |        []       |
++---------------------------------+-----------------+
+Function tokenURI(uint256)
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|             tokenId             |      []      |
+|                                 |      []      |
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   | ['baseURI']  |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Function slitherConstructorVariables()
++---------------------------------+--------------+
+|             Variable            | Dependencies |
++---------------------------------+--------------+
+|           ERC721.name           |      []      |
+|          ERC721.symbol          |      []      |
+|         ERC721._ownerOf         |      []      |
+|        ERC721._balanceOf        |      []      |
+|        ERC721.getApproved       |      []      |
+|     ERC721.isApprovedForAll     |      []      |
+|    DynamicContribution.owner    |      []      |
+|   DynamicContribution.baseURI   |      []      |
+| DynamicContribution.totalSupply |      []      |
+|   DynamicContribution._locked   |      []      |
++---------------------------------+--------------+
+Contract IDynamicContribution
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
++----------+--------------+
+
+Function mint()
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| tokenId  |      []      |
++----------+--------------+
+Function mintFor(address)
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+| account  |      []      |
+| tokenId  |      []      |
++----------+--------------+
+Contract ReentrancyAttacker
++---------------------+-------------------------------------------------+
+|       Variable      |                   Dependencies                  |
++---------------------+-------------------------------------------------+
+| dynamicContribution | ['_dynamicContribution', 'dynamicContribution'] |
+|      badAction      |                        []                       |
+|       justMint      |            ['_justMint', 'justMint']            |
++---------------------+-------------------------------------------------+
+
+Function constructor(address)
++----------------------------------------+--------------------------+
+|                Variable                |       Dependencies       |
++----------------------------------------+--------------------------+
+|          _dynamicContribution          |            []            |
+| ReentrancyAttacker.dynamicContribution | ['_dynamicContribution'] |
+|      ReentrancyAttacker.badAction      |            []            |
+|      ReentrancyAttacker.justMint       |            []            |
++----------------------------------------+--------------------------+
+Function receive()
++----------------------------------------+--------------+
+|                Variable                | Dependencies |
++----------------------------------------+--------------+
+| ReentrancyAttacker.dynamicContribution |      []      |
+|      ReentrancyAttacker.badAction      |      []      |
+|      ReentrancyAttacker.justMint       |      []      |
++----------------------------------------+--------------+
+Function onERC721Received(address,address,uint256,bytes)
++----------------------------------------+--------------+
+|                Variable                | Dependencies |
++----------------------------------------+--------------+
+|                                        |      []      |
+|                tokenId                 |      []      |
+| ReentrancyAttacker.dynamicContribution |      []      |
+|      ReentrancyAttacker.badAction      |      []      |
+|      ReentrancyAttacker.justMint       | ['justMint'] |
++----------------------------------------+--------------+
+Function setAttackOnJustMint(bool)
++----------------------------------------+---------------+
+|                Variable                |  Dependencies |
++----------------------------------------+---------------+
+|               _justMint                |       []      |
+| ReentrancyAttacker.dynamicContribution |       []      |
+|      ReentrancyAttacker.badAction      |       []      |
+|      ReentrancyAttacker.justMint       | ['_justMint'] |
++----------------------------------------+---------------+
+Function badMint()
++----------------------------------------+-------------------------+
+|                Variable                |       Dependencies      |
++----------------------------------------+-------------------------+
+|                tokenId                 | ['dynamicContribution'] |
+| ReentrancyAttacker.dynamicContribution | ['dynamicContribution'] |
+|      ReentrancyAttacker.badAction      |            []           |
+|      ReentrancyAttacker.justMint       |            []           |
++----------------------------------------+-------------------------+
+Function badMintFor()
++----------------------------------------+---------------------------------+
+|                Variable                |           Dependencies          |
++----------------------------------------+---------------------------------+
+|                tokenId                 | ['this', 'dynamicContribution'] |
+| ReentrancyAttacker.dynamicContribution |     ['dynamicContribution']     |
+|      ReentrancyAttacker.badAction      |                []               |
+|      ReentrancyAttacker.justMint       |                []               |
++----------------------------------------+---------------------------------+
+Contract ERC721
++------------------+----------------------------+
+|     Variable     |        Dependencies        |
++------------------+----------------------------+
+|       name       |         ['_name']          |
+|      symbol      |        ['_symbol']         |
+|     _ownerOf     |     ['to', '_ownerOf']     |
+|    _balanceOf    |       ['_balanceOf']       |
+|   getApproved    | ['spender', 'getApproved'] |
+| isApprovedForAll |    ['isApprovedForAll']    |
++------------------+----------------------------+
+
+Function tokenURI(uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            id           |      []      |
+|                         |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function ownerOf(uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            id           |      []      |
+|          owner          | ['_ownerOf'] |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     | ['_ownerOf'] |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function balanceOf(address)
++-------------------------+----------------+
+|         Variable        |  Dependencies  |
++-------------------------+----------------+
+|          owner          |       []       |
+|                         |       []       |
+|       ERC721.name       |       []       |
+|      ERC721.symbol      |       []       |
+|     ERC721._ownerOf     |       []       |
+|    ERC721._balanceOf    | ['_balanceOf'] |
+|    ERC721.getApproved   |       []       |
+| ERC721.isApprovedForAll |       []       |
++-------------------------+----------------+
+Function constructor(string,string)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|          _name          |  ['_name']   |
+|         _symbol         | ['_symbol']  |
+|       ERC721.name       |  ['_name']   |
+|      ERC721.symbol      | ['_symbol']  |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function approve(address,uint256)
++-------------------------+----------------------------+
+|         Variable        |        Dependencies        |
++-------------------------+----------------------------+
+|         spender         |             []             |
+|            id           |             []             |
+|          owner          |        ['_ownerOf']        |
+|       ERC721.name       |             []             |
+|      ERC721.symbol      |             []             |
+|     ERC721._ownerOf     |        ['_ownerOf']        |
+|    ERC721._balanceOf    |             []             |
+|    ERC721.getApproved   | ['spender', 'getApproved'] |
+| ERC721.isApprovedForAll |    ['isApprovedForAll']    |
++-------------------------+----------------------------+
+Function setApprovalForAll(address,bool)
++-------------------------+----------------------+
+|         Variable        |     Dependencies     |
++-------------------------+----------------------+
+|         operator        |          []          |
+|         approved        |          []          |
+|       ERC721.name       |          []          |
+|      ERC721.symbol      |          []          |
+|     ERC721._ownerOf     |          []          |
+|    ERC721._balanceOf    |          []          |
+|    ERC721.getApproved   |          []          |
+| ERC721.isApprovedForAll | ['isApprovedForAll'] |
++-------------------------+----------------------+
+Function transferFrom(address,address,uint256)
++-------------------------+----------------------+
+|         Variable        |     Dependencies     |
++-------------------------+----------------------+
+|           from          |       ['from']       |
+|            to           |        ['to']        |
+|            id           |        ['id']        |
+|       ERC721.name       |          []          |
+|      ERC721.symbol      |          []          |
+|     ERC721._ownerOf     |  ['to', '_ownerOf']  |
+|    ERC721._balanceOf    |    ['_balanceOf']    |
+|    ERC721.getApproved   |   ['getApproved']    |
+| ERC721.isApprovedForAll | ['isApprovedForAll'] |
++-------------------------+----------------------+
+Function safeTransferFrom(address,address,uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|           from          |      []      |
+|            to           |      []      |
+|            id           |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function safeTransferFrom(address,address,uint256,bytes)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|           from          |      []      |
+|            to           |      []      |
+|            id           |      []      |
+|           data          |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function supportsInterface(bytes4)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|       interfaceId       |      []      |
+|                         |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function _mint(address,uint256)
++-------------------------+--------------------+
+|         Variable        |    Dependencies    |
++-------------------------+--------------------+
+|            to           |       ['to']       |
+|            id           |       ['id']       |
+|       ERC721.name       |         []         |
+|      ERC721.symbol      |         []         |
+|     ERC721._ownerOf     | ['to', '_ownerOf'] |
+|    ERC721._balanceOf    |   ['_balanceOf']   |
+|    ERC721.getApproved   |         []         |
+| ERC721.isApprovedForAll |         []         |
++-------------------------+--------------------+
+Function _burn(uint256)
++-------------------------+-----------------+
+|         Variable        |   Dependencies  |
++-------------------------+-----------------+
+|            id           |        []       |
+|          owner          |   ['_ownerOf']  |
+|       ERC721.name       |        []       |
+|      ERC721.symbol      |        []       |
+|     ERC721._ownerOf     |   ['_ownerOf']  |
+|    ERC721._balanceOf    |  ['_balanceOf'] |
+|    ERC721.getApproved   | ['getApproved'] |
+| ERC721.isApprovedForAll |        []       |
++-------------------------+-----------------+
+Function _safeMint(address,uint256)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            to           |      []      |
+|            id           |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Function _safeMint(address,uint256,bytes)
++-------------------------+--------------+
+|         Variable        | Dependencies |
++-------------------------+--------------+
+|            to           |      []      |
+|            id           |      []      |
+|           data          |      []      |
+|       ERC721.name       |      []      |
+|      ERC721.symbol      |      []      |
+|     ERC721._ownerOf     |      []      |
+|    ERC721._balanceOf    |      []      |
+|    ERC721.getApproved   |      []      |
+| ERC721.isApprovedForAll |      []      |
++-------------------------+--------------+
+Contract ERC721TokenReceiver
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
++----------+--------------+
+
+Function onERC721Received(address,address,uint256,bytes)
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
+|          |      []      |
++----------+--------------+
+Contract LibString
++----------+--------------+
+| Variable | Dependencies |
++----------+--------------+
++----------+--------------+
+
+Function toString(uint256)
++----------+------------------------------------------------+
+| Variable |                  Dependencies                  |
++----------+------------------------------------------------+
+|  value   |                       []                       |
+|   str    | ['str', 'newFreeMemoryPointer_toString_asm_0'] |
++----------+------------------------------------------------+
+. analyzed (6 contracts)

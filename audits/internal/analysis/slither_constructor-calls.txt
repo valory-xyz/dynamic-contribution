@@ -1,0 +1,45 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
+###################################
+####### DynamicContribution #######
+###################################
+
+## Constructor Call Sequence
+	- ERC721
+	- DynamicContribution
+
+## Constructor Definitions
+
+### ERC721
+
+     constructor(string memory _name, string memory _symbol) {
+        name = _name;
+        symbol = _symbol;
+    }
+
+### DynamicContribution
+
+     constructor(string memory _name, string memory _symbol, string memory _baseURI) ERC721(_name, _symbol)
+    {
+        baseURI = _baseURI;
+        owner = msg.sender;
+    }
+
+##################################
+####### ReentrancyAttacker #######
+##################################
+
+## Constructor Call Sequence
+	- ReentrancyAttacker
+
+## Constructor Definitions
+
+### ReentrancyAttacker
+
+     constructor(address _dynamicContribution) {
+        dynamicContribution = _dynamicContribution;
+    }
+
+. analyzed (6 contracts)

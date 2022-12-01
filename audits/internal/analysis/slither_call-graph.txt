@@ -1,0 +1,10 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+Call Graph: all_contracts.call-graph.dot
+Call Graph: DynamicContribution.call-graph.dot
+Call Graph: IDynamicContribution.call-graph.dot
+Call Graph: ReentrancyAttacker.call-graph.dot
+Call Graph: LibString.call-graph.dot
+
+. analyzed (6 contracts)

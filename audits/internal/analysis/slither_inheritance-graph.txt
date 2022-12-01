@@ -1,0 +1,6 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+Inheritance Graph: inheritance-graph.dot
+
+. analyzed (6 contracts)
