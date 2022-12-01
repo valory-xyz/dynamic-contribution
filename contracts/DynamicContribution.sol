@@ -20,6 +20,10 @@ error ZeroValue();
 /// @param max Maximum possible value.
 error Overflow(uint256 provided, uint256 max);
 
+/// @dev Wrong token Id provided.
+/// @param provided Token Id.
+error WrongTokenId(uint256 provided);
+
 /// @dev Caught reentrancy violation.
 error ReentrancyGuard();
 
@@ -51,7 +55,7 @@ contract DynamicContribution is ERC721 {
 
     /// @dev Changes the owner address.
     /// @param newOwner Address of a new owner.
-    function changeOwner(address newOwner) external virtual {
+    function changeOwner(address newOwner) external {
         // Check for the ownership
         if (msg.sender != owner) {
             revert OwnerOnly(msg.sender, owner);
@@ -107,29 +111,17 @@ contract DynamicContribution is ERC721 {
         _locked = 1;
     }
 
-    /// @dev Burns a token.
-    /// @notice Only the token Id owner can burn the token.
-    function burn(uint256 tokenId) external {
-        address tokenOwner = ownerOf(tokenId);
-        // Check if the msg.sender is the token owner
-        if (msg.sender != tokenOwner) {
-            revert OwnerOnly(msg.sender, tokenOwner);
-        }
-        // Burn the token
-        _burn(tokenId);
-    }
-
     /// @dev Checks for the token existence.
     /// @notice Token counter starts from 1.
     /// @param tokenId Token Id.
     /// @return true if the token exists, false otherwise.
-    function exists(uint256 tokenId) external view virtual returns (bool) {
+    function exists(uint256 tokenId) external view returns (bool) {
         return tokenId > 0 && tokenId < (totalSupply + 1);
     }
 
     /// @dev Sets token base URI.
     /// @param bURI Base URI string.
-    function setBaseURI(string memory bURI) external virtual {
+    function setBaseURI(string memory bURI) external {
         // Check for the ownership
         if (msg.sender != owner) {
             revert OwnerOnly(msg.sender, owner);
@@ -148,7 +140,7 @@ contract DynamicContribution is ERC721 {
     /// @notice Token counter starts from 1.
     /// @param id Token counter.
     /// @return tokenId Token Id.
-    function tokenByIndex(uint256 id) external view virtual returns (uint256 tokenId) {
+    function tokenByIndex(uint256 id) external view returns (uint256 tokenId) {
         tokenId = id + 1;
         if (tokenId > totalSupply) {
             revert Overflow(tokenId, totalSupply);
@@ -158,7 +150,10 @@ contract DynamicContribution is ERC721 {
     /// @dev Gets token URI.
     /// @param tokenId Token Id.
     /// @return Token URI string.
-    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        if (tokenId == 0 || tokenId > totalSupply) {
+            revert WrongTokenId(tokenId);
+        }
         return string.concat(baseURI, tokenId.toString());
     }
 }
