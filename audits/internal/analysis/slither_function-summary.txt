@@ -1,0 +1,162 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
+Contract DynamicContribution
+Contract vars: ['name', 'symbol', '_ownerOf', '_balanceOf', 'getApproved', 'isApprovedForAll', 'owner', 'baseURI', 'totalSupply', '_locked']
+Inheritance:: ['ERC721']
+ 
++-------------------------------------------------+------------+-----------+-------------------------------------+----------------------------+---------------------------------------------------------------+-----------------------------------------------------------------------------+
+|                     Function                    | Visibility | Modifiers |                 Read                |           Write            |                         Internal Calls                        |                                External Calls                               |
++-------------------------------------------------+------------+-----------+-------------------------------------+----------------------------+---------------------------------------------------------------+-----------------------------------------------------------------------------+
+|                tokenURI(uint256)                |   public   |     []    |                  []                 |             []             |                               []                              |                                      []                                     |
+|                 ownerOf(uint256)                |   public   |     []    |             ['_ownerOf']            |             []             |                    ['require(bool,string)']                   |                                      []                                     |
+|                balanceOf(address)               |   public   |     []    |            ['_balanceOf']           |             []             |                    ['require(bool,string)']                   |                                      []                                     |
+|            constructor(string,string)           |  internal  |     []    |                  []                 |     ['name', 'symbol']     |                               []                              |                                      []                                     |
+|             approve(address,uint256)            |   public   |     []    |   ['_ownerOf', 'isApprovedForAll']  |      ['getApproved']       |                    ['require(bool,string)']                   |                                      []                                     |
+|                                                 |            |           |            ['msg.sender']           |                            |                                                               |                                                                             |
+|         setApprovalForAll(address,bool)         |   public   |     []    |            ['msg.sender']           |    ['isApprovedForAll']    |                               []                              |                                      []                                     |
+|      transferFrom(address,address,uint256)      |   public   |     []    |      ['_balanceOf', '_ownerOf']     | ['_balanceOf', '_ownerOf'] |                    ['require(bool,string)']                   |                                      []                                     |
+|                                                 |            |           | ['getApproved', 'isApprovedForAll'] |      ['getApproved']       |                                                               |                                                                             |
+|                                                 |            |           |            ['msg.sender']           |                            |                                                               |                                                                             |
+|    safeTransferFrom(address,address,uint256)    |   public   |     []    |            ['msg.sender']           |             []             |           ['code(address)', 'require(bool,string)']           |      ['ERC721TokenReceiver(to).onERC721Received(msg.sender,from,id,)']      |
+|                                                 |            |           |                                     |                            |                        ['transferFrom']                       |                                                                             |
+| safeTransferFrom(address,address,uint256,bytes) |   public   |     []    |            ['msg.sender']           |             []             |           ['code(address)', 'require(bool,string)']           |    ['ERC721TokenReceiver(to).onERC721Received(msg.sender,from,id,data)']    |
+|                                                 |            |           |                                     |                            |                        ['transferFrom']                       |                                                                             |
+|            supportsInterface(bytes4)            |   public   |     []    |                  []                 |             []             |                               []                              |                                      []                                     |
+|              _mint(address,uint256)             |  internal  |     []    |      ['_balanceOf', '_ownerOf']     | ['_balanceOf', '_ownerOf'] |                    ['require(bool,string)']                   |                                      []                                     |
+|                  _burn(uint256)                 |  internal  |     []    |      ['_balanceOf', '_ownerOf']     | ['_balanceOf', '_ownerOf'] |                    ['require(bool,string)']                   |                                      []                                     |
+|                                                 |            |           |           ['getApproved']           |      ['getApproved']       |                                                               |                                                                             |
+|            _safeMint(address,uint256)           |  internal  |     []    |            ['msg.sender']           |             []             |           ['code(address)', 'require(bool,string)']           |   ['ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,)']   |
+|                                                 |            |           |                                     |                            |                           ['_mint']                           |                                                                             |
+|         _safeMint(address,uint256,bytes)        |  internal  |     []    |            ['msg.sender']           |             []             |           ['code(address)', 'require(bool,string)']           | ['ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,data)'] |
+|                                                 |            |           |                                     |                            |                           ['_mint']                           |                                                                             |
+|        constructor(string,string,string)        |   public   |     []    |            ['msg.sender']           |    ['baseURI', 'owner']    |                        ['constructor']                        |                                      []                                     |
+|               changeOwner(address)              |  external  |     []    |       ['owner', 'msg.sender']       |         ['owner']          | ['revert OwnerOnly(address,address)', 'revert ZeroAddress()'] |                                      []                                     |
+|                      mint()                     |  external  |     []    |      ['_locked', 'totalSupply']     | ['_locked', 'totalSupply'] |           ['_safeMint', 'revert ReentrancyGuard()']           |                                      []                                     |
+|                                                 |            |           |            ['msg.sender']           |                            |                                                               |                                                                             |
+|                 mintFor(address)                |  external  |     []    |      ['_locked', 'totalSupply']     | ['_locked', 'totalSupply'] |           ['_safeMint', 'revert ReentrancyGuard()']           |                                      []                                     |
+|                  burn(uint256)                  |  external  |     []    |            ['msg.sender']           |             []             |        ['ownerOf', 'revert OwnerOnly(address,address)']       |                                      []                                     |
+|                                                 |            |           |                                     |                            |                           ['_burn']                           |                                                                             |
+|                 exists(uint256)                 |  external  |     []    |           ['totalSupply']           |             []             |                               []                              |                                      []                                     |
+|                setBaseURI(string)               |  external  |     []    |       ['owner', 'msg.sender']       |        ['baseURI']         |  ['revert OwnerOnly(address,address)', 'revert ZeroValue()']  |                                      []                                     |
+|              tokenByIndex(uint256)              |  external  |     []    |           ['totalSupply']           |             []             |              ['revert Overflow(uint256,uint256)']             |                                      []                                     |
+|                tokenURI(uint256)                |   public   |     []    |             ['baseURI']             |             []             |                      ['string.concat()']                      |     ['tokenId.toString()', 'string.concat(baseURI,tokenId.toString())']     |
+|          slitherConstructorVariables()          |  internal  |     []    |                  []                 |        ['_locked']         |                               []                              |                                      []                                     |
++-------------------------------------------------+------------+-----------+-------------------------------------+----------------------------+---------------------------------------------------------------+-----------------------------------------------------------------------------+
+
++-----------+------------+------+-------+----------------+----------------+
+| Modifiers | Visibility | Read | Write | Internal Calls | External Calls |
++-----------+------------+------+-------+----------------+----------------+
++-----------+------------+------+-------+----------------+----------------+
+
+
+Contract IDynamicContribution
+Contract vars: []
+Inheritance:: []
+ 
++------------------+------------+-----------+------+-------+----------------+----------------+
+|     Function     | Visibility | Modifiers | Read | Write | Internal Calls | External Calls |
++------------------+------------+-----------+------+-------+----------------+----------------+
+|      mint()      |  external  |     []    |  []  |   []  |       []       |       []       |
+| mintFor(address) |  external  |     []    |  []  |   []  |       []       |       []       |
++------------------+------------+-----------+------+-------+----------------+----------------+
+
++-----------+------------+------+-------+----------------+----------------+
+| Modifiers | Visibility | Read | Write | Internal Calls | External Calls |
++-----------+------------+------+-------+----------------+----------------+
++-----------+------------+------+-------+----------------+----------------+
+
+
+Contract ReentrancyAttacker
+Contract vars: ['dynamicContribution', 'badAction', 'justMint']
+Inheritance:: ['ERC721TokenReceiver']
+ 
++-------------------------------------------------+------------+-----------+---------------------------------+-------------------------+---------------------------+----------------------------------------------------------------------+
+|                     Function                    | Visibility | Modifiers |               Read              |          Write          |       Internal Calls      |                            External Calls                            |
++-------------------------------------------------+------------+-----------+---------------------------------+-------------------------+---------------------------+----------------------------------------------------------------------+
+| onERC721Received(address,address,uint256,bytes) |  external  |     []    |                []               |            []           |             []            |                                  []                                  |
+|               constructor(address)              |   public   |     []    |                []               | ['dynamicContribution'] |             []            |                                  []                                  |
+|                    receive()                    |  external  |     []    |                []               |      ['badAction']      |             []            |                                  []                                  |
+| onERC721Received(address,address,uint256,bytes) |   public   |     []    |       ['justMint', 'this']      |      ['badAction']      | ['badMintFor', 'badMint'] |                                  []                                  |
+|            setAttackOnJustMint(bool)            |  external  |     []    |                []               |       ['justMint']      |             []            |                                  []                                  |
+|                    badMint()                    |   public   |     []    |     ['dynamicContribution']     |            []           |             []            |         ['IDynamicContribution(dynamicContribution).mint()']         |
+|                   badMintFor()                  |   public   |     []    | ['dynamicContribution', 'this'] |            []           |             []            | ['IDynamicContribution(dynamicContribution).mintFor(address(this))'] |
++-------------------------------------------------+------------+-----------+---------------------------------+-------------------------+---------------------------+----------------------------------------------------------------------+
+
++-----------+------------+------+-------+----------------+----------------+
+| Modifiers | Visibility | Read | Write | Internal Calls | External Calls |
++-----------+------------+------+-------+----------------+----------------+
++-----------+------------+------+-------+----------------+----------------+
+
+
+Contract ERC721
+Contract vars: ['name', 'symbol', '_ownerOf', '_balanceOf', 'getApproved', 'isApprovedForAll']
+Inheritance:: []
+ 
++-------------------------------------------------+------------+-----------+-------------------------------------+----------------------------+-------------------------------------------+-----------------------------------------------------------------------------+
+|                     Function                    | Visibility | Modifiers |                 Read                |           Write            |               Internal Calls              |                                External Calls                               |
++-------------------------------------------------+------------+-----------+-------------------------------------+----------------------------+-------------------------------------------+-----------------------------------------------------------------------------+
+|                tokenURI(uint256)                |   public   |     []    |                  []                 |             []             |                     []                    |                                      []                                     |
+|                 ownerOf(uint256)                |   public   |     []    |             ['_ownerOf']            |             []             |          ['require(bool,string)']         |                                      []                                     |
+|                balanceOf(address)               |   public   |     []    |            ['_balanceOf']           |             []             |          ['require(bool,string)']         |                                      []                                     |
+|            constructor(string,string)           |  internal  |     []    |                  []                 |     ['name', 'symbol']     |                     []                    |                                      []                                     |
+|             approve(address,uint256)            |   public   |     []    |   ['_ownerOf', 'isApprovedForAll']  |      ['getApproved']       |          ['require(bool,string)']         |                                      []                                     |
+|                                                 |            |           |            ['msg.sender']           |                            |                                           |                                                                             |
+|         setApprovalForAll(address,bool)         |   public   |     []    |            ['msg.sender']           |    ['isApprovedForAll']    |                     []                    |                                      []                                     |
+|      transferFrom(address,address,uint256)      |   public   |     []    |      ['_balanceOf', '_ownerOf']     | ['_balanceOf', '_ownerOf'] |          ['require(bool,string)']         |                                      []                                     |
+|                                                 |            |           | ['getApproved', 'isApprovedForAll'] |      ['getApproved']       |                                           |                                                                             |
+|                                                 |            |           |            ['msg.sender']           |                            |                                           |                                                                             |
+|    safeTransferFrom(address,address,uint256)    |   public   |     []    |            ['msg.sender']           |             []             | ['code(address)', 'require(bool,string)'] |      ['ERC721TokenReceiver(to).onERC721Received(msg.sender,from,id,)']      |
+|                                                 |            |           |                                     |                            |              ['transferFrom']             |                                                                             |
+| safeTransferFrom(address,address,uint256,bytes) |   public   |     []    |            ['msg.sender']           |             []             | ['code(address)', 'require(bool,string)'] |    ['ERC721TokenReceiver(to).onERC721Received(msg.sender,from,id,data)']    |
+|                                                 |            |           |                                     |                            |              ['transferFrom']             |                                                                             |
+|            supportsInterface(bytes4)            |   public   |     []    |                  []                 |             []             |                     []                    |                                      []                                     |
+|              _mint(address,uint256)             |  internal  |     []    |      ['_balanceOf', '_ownerOf']     | ['_balanceOf', '_ownerOf'] |          ['require(bool,string)']         |                                      []                                     |
+|                  _burn(uint256)                 |  internal  |     []    |      ['_balanceOf', '_ownerOf']     | ['_balanceOf', '_ownerOf'] |          ['require(bool,string)']         |                                      []                                     |
+|                                                 |            |           |           ['getApproved']           |      ['getApproved']       |                                           |                                                                             |
+|            _safeMint(address,uint256)           |  internal  |     []    |            ['msg.sender']           |             []             |         ['code(address)', '_mint']        |   ['ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,)']   |
+|                                                 |            |           |                                     |                            |          ['require(bool,string)']         |                                                                             |
+|         _safeMint(address,uint256,bytes)        |  internal  |     []    |            ['msg.sender']           |             []             |         ['code(address)', '_mint']        | ['ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,data)'] |
+|                                                 |            |           |                                     |                            |          ['require(bool,string)']         |                                                                             |
++-------------------------------------------------+------------+-----------+-------------------------------------+----------------------------+-------------------------------------------+-----------------------------------------------------------------------------+
+
++-----------+------------+------+-------+----------------+----------------+
+| Modifiers | Visibility | Read | Write | Internal Calls | External Calls |
++-----------+------------+------+-------+----------------+----------------+
++-----------+------------+------+-------+----------------+----------------+
+
+
+Contract ERC721TokenReceiver
+Contract vars: []
+Inheritance:: []
+ 
++-------------------------------------------------+------------+-----------+------+-------+----------------+----------------+
+|                     Function                    | Visibility | Modifiers | Read | Write | Internal Calls | External Calls |
++-------------------------------------------------+------------+-----------+------+-------+----------------+----------------+
+| onERC721Received(address,address,uint256,bytes) |  external  |     []    |  []  |   []  |       []       |       []       |
++-------------------------------------------------+------------+-----------+------+-------+----------------+----------------+
+
++-----------+------------+------+-------+----------------+----------------+
+| Modifiers | Visibility | Read | Write | Internal Calls | External Calls |
++-----------+------------+------+-------+----------------+----------------+
++-----------+------------+------+-------+----------------+----------------+
+
+
+Contract LibString
+Contract vars: []
+Inheritance:: []
+ 
++-------------------+------------+-----------+------+-------+-----------------------------------------------+----------------+
+|      Function     | Visibility | Modifiers | Read | Write |                 Internal Calls                | External Calls |
++-------------------+------------+-----------+------+-------+-----------------------------------------------+----------------+
+| toString(uint256) |  internal  |     []    |  []  |   []  | ['mstore(uint256,uint256)', 'mload(uint256)'] |       []       |
+|                   |            |           |      |       |          ['mstore8(uint256,uint256)']         |                |
++-------------------+------------+-----------+------+-------+-----------------------------------------------+----------------+
+
++-----------+------------+------+-------+----------------+----------------+
+| Modifiers | Visibility | Read | Write | Internal Calls | External Calls |
++-----------+------------+------+-------+----------------+----------------+
++-----------+------------+------+-------+----------------+----------------+
+
+. analyzed (6 contracts)

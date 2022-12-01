@@ -1,0 +1,24 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
+Compiled with Builder
+Number of lines: 451 (+ 0 in dependencies, + 58 in tests)
+Number of assembly lines: 0
+Number of contracts: 4 (+ 0 in dependencies, + 2 tests) 
+
+Number of optimization issues: 0
+Number of informational issues: 13
+Number of low issues: 2
+Number of medium issues: 3
+Number of high issues: 0
+
+ERCs: ERC721, ERC165
+
++---------------------+-------------+---------------+------------+--------------+----------+
+|         Name        | # functions |      ERCS     | ERC20 info | Complex code | Features |
++---------------------+-------------+---------------+------------+--------------+----------+
+| DynamicContribution |      24     | ERC165,ERC721 |            |      No      |          |
+|      LibString      |      1      |               |            |      No      | Assembly |
++---------------------+-------------+---------------+------------+--------------+----------+
+. analyzed (6 contracts)

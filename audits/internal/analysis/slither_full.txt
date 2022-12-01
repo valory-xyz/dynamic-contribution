@@ -1,0 +1,82 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
+ReentrancyAttacker for testing purposes only. I suggest ignoring the warning
+Contract locking ether found:
+	Contract ReentrancyAttacker (contracts/test/ReentrancyAttacker.sol#16-59) has payable functions:
+	 - ReentrancyAttacker.receive() (contracts/test/ReentrancyAttacker.sol#28-30)
+	But does not have a function to withdraw the ether
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#contracts-that-lock-ether
+
+False positive. _locked is reentrancy guard.
+Reentrancy in DynamicContribution.mint() (contracts/DynamicContribution.sol#71-87):
+	External calls:
+	- _safeMint(msg.sender,tokenId) (contracts/DynamicContribution.sol#84)
+		- require(bool,string)(to.code.length == 0 || ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,) == ERC721TokenReceiver.onERC721Received.selector,UNSAFE_RECIPIENT) (lib/solmate/src/tokens/ERC721.sol#196-201)
+	State variables written after the call(s):
+	- _locked = 1 (contracts/DynamicContribution.sol#86)
+Reentrancy in DynamicContribution.mintFor(address) (contracts/DynamicContribution.sol#92-108):
+	External calls:
+	- _safeMint(account,tokenId) (contracts/DynamicContribution.sol#105)
+		- require(bool,string)(to.code.length == 0 || ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,) == ERC721TokenReceiver.onERC721Received.selector,UNSAFE_RECIPIENT) (lib/solmate/src/tokens/ERC721.sol#196-201)
+	State variables written after the call(s):
+	- _locked = 1 (contracts/DynamicContribution.sol#107)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-1
+
+ReentrancyAttacker for testing purposes only. I suggest ignoring the warning
+ReentrancyAttacker.constructor(address)._dynamicContribution (contracts/test/ReentrancyAttacker.sol#23) lacks a zero-check on :
+		- dynamicContribution = _dynamicContribution (contracts/test/ReentrancyAttacker.sol#24)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-zero-address-validation
+
+ReentrancyAttacker for testing purposes only. I suggest ignoring the warning
+Reentrancy in ReentrancyAttacker.onERC721Received(address,address,uint256,bytes) (contracts/test/ReentrancyAttacker.sol#33-42):
+	External calls:
+	- tokenId = badMint() (contracts/test/ReentrancyAttacker.sol#36)
+		- tokenId = IDynamicContribution(dynamicContribution).mint() (contracts/test/ReentrancyAttacker.sol#51)
+	- tokenId = badMintFor() (contracts/test/ReentrancyAttacker.sol#38)
+		- tokenId = IDynamicContribution(dynamicContribution).mintFor(address(this)) (contracts/test/ReentrancyAttacker.sol#56)
+	State variables written after the call(s):
+	- badAction = true (contracts/test/ReentrancyAttacker.sol#40)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#reentrancy-vulnerabilities-2
+
+Out of scope and false positive. I suggest ignoring the warning
+LibString.toString(uint256) (lib/solmate/src/utils/LibString.sol#8-55) uses assembly
+	- INLINE ASM (lib/solmate/src/utils/LibString.sol#10-54)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#assembly-usage
+
+Out of scope. Ignore warnings.
+Different versions of Solidity are used:
+	- Version used: ['>=0.8.0', '^0.8.17']
+	- ^0.8.17 (contracts/DynamicContribution.sol#2)
+	- ^0.8.17 (contracts/test/ReentrancyAttacker.sol#2)
+	- >=0.8.0 (lib/solmate/src/tokens/ERC721.sol#2)
+	- >=0.8.0 (lib/solmate/src/utils/LibString.sol#2)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#different-pragma-directives-are-used
+
+Out of scope and false positive. I suggest ignoring the warning
+ERC721._safeMint(address,uint256,bytes) (lib/solmate/src/tokens/ERC721.sol#204-217) is never used and should be removed
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#dead-code
+
+0.8.16 vs 0.8.17
+There is a theory that one should use a previous version than the latest existing one.
+However, this means that we will use the version known to contain this fixed bug due to concerns about unknown bugs. I suggest ignoring this warning.
+https://blog.soliditylang.org/2022/09/08/storage-write-removal-before-conditional-termination/
+Pragma version^0.8.17 (contracts/DynamicContribution.sol#2) necessitates a version too recent to be trusted. Consider deploying with 0.6.12/0.7.6/0.8.16
+Pragma version^0.8.17 (contracts/test/ReentrancyAttacker.sol#2) necessitates a version too recent to be trusted. Consider deploying with 0.6.12/0.7.6/0.8.16
+Pragma version>=0.8.0 (lib/solmate/src/tokens/ERC721.sol#2) allows old versions
+Pragma version>=0.8.0 (lib/solmate/src/utils/LibString.sol#2) allows old versions
+solc-0.8.17 is not recommended for deployment
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#incorrect-versions-of-solidity
+
+I suggest ignoring the warning
+DynamicContribution (contracts/DynamicContribution.sol#27-164) should inherit from IDynamicContribution (contracts/test/ReentrancyAttacker.sol#5-14)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#missing-inheritance
+
+I suggest ignoring the warning
+Variable DynamicContribution._locked (contracts/DynamicContribution.sol#40) is not in mixedCase
+Parameter ReentrancyAttacker.setAttackOnJustMint(bool)._justMint (contracts/test/ReentrancyAttacker.sol#45) is not in mixedCase
+Variable ERC721._ownerOf (lib/solmate/src/tokens/ERC721.sol#31) is not in mixedCase
+Variable ERC721._balanceOf (lib/solmate/src/tokens/ERC721.sol#33) is not in mixedCase
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#conformance-to-solidity-naming-conventions
+. analyzed (6 contracts with 81 detectors), 18 result(s) found

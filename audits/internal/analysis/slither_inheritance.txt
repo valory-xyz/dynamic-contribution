@@ -1,0 +1,38 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+Inheritance
+Child_Contract -> Immediate_Base_Contracts [Not_Immediate_Base_Contracts]
++ DynamicContribution
+ -> ERC721
+
++ IDynamicContribution
+
++ ReentrancyAttacker
+ -> ERC721TokenReceiver
+
++ ERC721
+
++ ERC721TokenReceiver
+
++ LibString
+
+
+Base_Contract -> Immediate_Child_Contracts
+ [Not_Immediate_Child_Contracts]
+
++ DynamicContribution
+
++ IDynamicContribution
+
++ ReentrancyAttacker
+
++ ERC721
+ -> DynamicContribution
+
++ ERC721TokenReceiver
+ -> ReentrancyAttacker
+
++ LibString
+
+. analyzed (6 contracts)

@@ -1,0 +1,80 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
+Contract DynamicContribution
++-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|           Function          |                                                                                   require or assert                                                                                    |
++-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|           tokenURI          |                                                                                                                                                                                        |
+|           ownerOf           |                                                         require(bool,string)((owner = _ownerOf[id]) != address(0),NOT_MINTED)                                                          |
+|          balanceOf          |                                                                 require(bool,string)(owner != address(0),ZERO_ADDRESS)                                                                 |
+|         constructor         |                                                                                                                                                                                        |
+|           approve           |                                            require(bool,string)(msg.sender == owner || isApprovedForAll[owner][msg.sender],NOT_AUTHORIZED)                                             |
+|      setApprovalForAll      |                                                                                                                                                                                        |
+|         transferFrom        |                                                                 require(bool,string)(from == _ownerOf[id],WRONG_FROM)                                                                  |
+|                             |                                                                require(bool,string)(to != address(0),INVALID_RECIPIENT)                                                                |
+|                             |                             require(bool,string)(msg.sender == from || isApprovedForAll[from][msg.sender] || msg.sender == getApproved[id],NOT_AUTHORIZED)                             |
+|       safeTransferFrom      |                                                                 require(bool,string)(from == _ownerOf[id],WRONG_FROM)                                                                  |
+|                             |      require(bool,string)(to.code.length == 0 || ERC721TokenReceiver(to).onERC721Received(msg.sender,from,id,) == ERC721TokenReceiver.onERC721Received.selector,UNSAFE_RECIPIENT)      |
+|                             |                                                                require(bool,string)(to != address(0),INVALID_RECIPIENT)                                                                |
+|                             |                             require(bool,string)(msg.sender == from || isApprovedForAll[from][msg.sender] || msg.sender == getApproved[id],NOT_AUTHORIZED)                             |
+|       safeTransferFrom      |    require(bool,string)(to.code.length == 0 || ERC721TokenReceiver(to).onERC721Received(msg.sender,from,id,data) == ERC721TokenReceiver.onERC721Received.selector,UNSAFE_RECIPIENT)    |
+|                             |                                                                 require(bool,string)(from == _ownerOf[id],WRONG_FROM)                                                                  |
+|                             |                                                                require(bool,string)(to != address(0),INVALID_RECIPIENT)                                                                |
+|                             |                             require(bool,string)(msg.sender == from || isApprovedForAll[from][msg.sender] || msg.sender == getApproved[id],NOT_AUTHORIZED)                             |
+|      supportsInterface      |                                                                                                                                                                                        |
+|            _mint            |                                                                require(bool,string)(to != address(0),INVALID_RECIPIENT)                                                                |
+|                             |                                                            require(bool,string)(_ownerOf[id] == address(0),ALREADY_MINTED)                                                             |
+|            _burn            |                                                                  require(bool,string)(owner != address(0),NOT_MINTED)                                                                  |
+|          _safeMint          |   require(bool,string)(to.code.length == 0 || ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,) == ERC721TokenReceiver.onERC721Received.selector,UNSAFE_RECIPIENT)   |
+|                             |                                                                require(bool,string)(to != address(0),INVALID_RECIPIENT)                                                                |
+|                             |                                                            require(bool,string)(_ownerOf[id] == address(0),ALREADY_MINTED)                                                             |
+|          _safeMint          | require(bool,string)(to.code.length == 0 || ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,data) == ERC721TokenReceiver.onERC721Received.selector,UNSAFE_RECIPIENT) |
+|                             |                                                                require(bool,string)(to != address(0),INVALID_RECIPIENT)                                                                |
+|                             |                                                            require(bool,string)(_ownerOf[id] == address(0),ALREADY_MINTED)                                                             |
+|         constructor         |                                                                                                                                                                                        |
+|         changeOwner         |                                                                                                                                                                                        |
+|             mint            |   require(bool,string)(to.code.length == 0 || ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,) == ERC721TokenReceiver.onERC721Received.selector,UNSAFE_RECIPIENT)   |
+|                             |                                                                require(bool,string)(to != address(0),INVALID_RECIPIENT)                                                                |
+|                             |                                                            require(bool,string)(_ownerOf[id] == address(0),ALREADY_MINTED)                                                             |
+|           mintFor           |   require(bool,string)(to.code.length == 0 || ERC721TokenReceiver(to).onERC721Received(msg.sender,address(0),id,) == ERC721TokenReceiver.onERC721Received.selector,UNSAFE_RECIPIENT)   |
+|                             |                                                                require(bool,string)(to != address(0),INVALID_RECIPIENT)                                                                |
+|                             |                                                            require(bool,string)(_ownerOf[id] == address(0),ALREADY_MINTED)                                                             |
+|             burn            |                                                                  require(bool,string)(owner != address(0),NOT_MINTED)                                                                  |
+|                             |                                                         require(bool,string)((owner = _ownerOf[id]) != address(0),NOT_MINTED)                                                          |
+|            exists           |                                                                                                                                                                                        |
+|          setBaseURI         |                                                                                                                                                                                        |
+|         tokenByIndex        |                                                                                                                                                                                        |
+|           tokenURI          |                                                                                                                                                                                        |
+| slitherConstructorVariables |                                                                                                                                                                                        |
++-----------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Contract IDynamicContribution
++----------+-------------------+
+| Function | require or assert |
++----------+-------------------+
+|   mint   |                   |
+| mintFor  |                   |
++----------+-------------------+
+
+Contract ReentrancyAttacker
++---------------------+-------------------+
+|       Function      | require or assert |
++---------------------+-------------------+
+|   onERC721Received  |                   |
+|     constructor     |                   |
+|       receive       |                   |
+|   onERC721Received  |                   |
+| setAttackOnJustMint |                   |
+|       badMint       |                   |
+|      badMintFor     |                   |
++---------------------+-------------------+
+
+Contract LibString
++----------+-------------------+
+| Function | require or assert |
++----------+-------------------+
+| toString |                   |
++----------+-------------------+
+. analyzed (6 contracts)

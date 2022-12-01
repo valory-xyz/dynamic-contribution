@@ -1,0 +1,41 @@
+'npx hardhat compile --force' running
+Compiled 4 Solidity files successfully
+
+
+DynamicContribution:
++---------------------------------+----------------------------------------------+------+--------+
+|               Name              |                     Type                     | Slot | Offset |
++---------------------------------+----------------------------------------------+------+--------+
+|           ERC721.name           |                    string                    |  0   |   0    |
+|          ERC721.symbol          |                    string                    |  1   |   0    |
+|         ERC721._ownerOf         |         mapping(uint256 => address)          |  2   |   0    |
+|        ERC721._balanceOf        |         mapping(address => uint256)          |  3   |   0    |
+|        ERC721.getApproved       |         mapping(uint256 => address)          |  4   |   0    |
+|     ERC721.isApprovedForAll     | mapping(address => mapping(address => bool)) |  5   |   0    |
+|    DynamicContribution.owner    |                   address                    |  6   |   0    |
+|   DynamicContribution.baseURI   |                    string                    |  7   |   0    |
+| DynamicContribution.totalSupply |                   uint256                    |  8   |   0    |
+|   DynamicContribution._locked   |                   uint256                    |  9   |   0    |
++---------------------------------+----------------------------------------------+------+--------+
+
+IDynamicContribution:
++------+------+------+--------+
+| Name | Type | Slot | Offset |
++------+------+------+--------+
++------+------+------+--------+
+
+ReentrancyAttacker:
++------------------------------+------+------+--------+
+|             Name             | Type | Slot | Offset |
++------------------------------+------+------+--------+
+| ReentrancyAttacker.badAction | bool |  0   |   0    |
+| ReentrancyAttacker.justMint  | bool |  0   |   1    |
++------------------------------+------+------+--------+
+
+LibString:
++------+------+------+--------+
+| Name | Type | Slot | Offset |
++------+------+------+--------+
++------+------+------+--------+
+
+. analyzed (6 contracts)
