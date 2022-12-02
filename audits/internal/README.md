@@ -88,6 +88,7 @@ echidna-test DynamicContribution-flatten.sol --contract DynamicContribution
                                                                                                                                              
 Ref: DynamicContribution needs attention
 ```
+[fixed] removed burn functionality, commit: `658e820a5b762900cdc456b85b2ac90438163be1`
 
 ### Security issues. Updated 01-12-22
 #### Problems found instrumentally
@@ -98,6 +99,7 @@ Several checks are obtained automatically. They are commented. No issue found by
 #### DynamicContribution needs attention
 In my opinion, the problems have a medium/low level of risk and they are related to the fact that the contract includes burn(). <br>
 The contract requires improvement or exclusion of the functionality with the burning of tokens. <br>
+[fixed] all listed issues, commit: `658e820a5b762900cdc456b85b2ac90438163be1`
 
 ##### totalSupply incorrect with `burn()`. Medium priority
 ```
@@ -112,6 +114,7 @@ https://eips.ethereum.org/EIPS/eip-721
 
 This condition will not be met in the current version of the contract after each operation `burn`
 ```
+[fixed] removed burn functionality, commit: `658e820a5b762900cdc456b85b2ac90438163be1`
 
 ##### tokenURI without checking by EIP-721. Medium priority 
 ```
@@ -123,6 +126,7 @@ https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
     }
 no existence check of tokenId
 ```
+[fixed] refactored a function and tests, commit: `658e820a5b762900cdc456b85b2ac90438163be1`
 
 ##### exists incorrect with `burn()`. Medium priority
 
@@ -133,6 +137,7 @@ no existence check of tokenId
 correct like 
         return _ownerOf(tokenId) != address(0);
 ```
+[fixed] removed burn functionality, commit: `658e820a5b762900cdc456b85b2ac90438163be1`
 
 ##### tokenByIndex needs to be rechecked for implementation with `burn()`. Medium priority
 
@@ -153,6 +158,7 @@ function burn(uint256 tokenId)
     _burn(ownerOf(tokenId), tokenId);
   }
 ```
+[fixed] removed burn functionality, commit: `658e820a5b762900cdc456b85b2ac90438163be1`
 
 ##### tokenOfOwnerByIndex not implemented. Low priority/No issue
 ```
@@ -161,8 +167,10 @@ The enumeration extension is OPTIONAL for ERC-721 smart contracts (see "caveats"
 
 tokenOfOwnerByIndex not implemented from this list
 ```
+[fixed] skipped the implementation of this optional function after a team consensus.
 
 ##### Remove virtual in DynamicContribution. Low priority.
 Ref: https://medium.com/upstate-interactive/solidity-override-vs-virtual-functions-c0a5dfb83aaf
 A function that allows an inheriting contract to override its behavior will be marked at virtual. (c)
+[fixed] removed redundant key words, commit: `658e820a5b762900cdc456b85b2ac90438163be1`
 
