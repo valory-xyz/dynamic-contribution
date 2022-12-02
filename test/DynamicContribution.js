@@ -74,6 +74,13 @@ describe("DynamicContribution", function () {
         it("Getting the token URI", async function () {
             const baseURI = "https://localhost/series/";
             await dynamicContribution.setBaseURI(baseURI);
+            // Try to get the URI of a non-existent token
+            await expect(
+                dynamicContribution.tokenURI(1)
+            ).to.be.revertedWith("WrongTokenId");
+            // Mint two tokens
+            await dynamicContribution.connect(deployer).mint();
+            await dynamicContribution.connect(deployer).mint();
             expect(await dynamicContribution.tokenURI(1)).to.equal(baseURI + "1");
             expect(await dynamicContribution.tokenURI(2)).to.equal(baseURI + "2");
         });
@@ -99,28 +106,6 @@ describe("DynamicContribution", function () {
             const tx = await dynamicContribution.connect(deployer).mint();
             const result = await tx.wait();
             expect(result.events[0].event).to.equal("Transfer");
-        });
-
-        it("Burn the token after creation", async function () {
-            const tokenId = 1;
-            // Mint a token
-            await dynamicContribution.connect(deployer).mint();
-            expect(await dynamicContribution.balanceOf(deployer.address)).to.equal(1);
-            // Burn a token
-            await dynamicContribution.connect(deployer).burn(tokenId);
-            expect(await dynamicContribution.balanceOf(deployer.address)).to.equal(0);
-        });
-
-        it("Burn the token after creation for another owner", async function () {
-            const account = signers[1];
-            const tokenId = 1;
-            // Mint a token
-            await dynamicContribution.connect(account).mint();
-            expect(await dynamicContribution.balanceOf(account.address)).to.equal(1);
-            // Try to burn a token that the deployer doesn't own
-            await expect(
-                dynamicContribution.connect(deployer).burn(tokenId)
-            ).to.be.revertedWith("OwnerOnly");
         });
     });
 
