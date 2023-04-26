@@ -2,5 +2,7 @@
 
 This is the official list of authors for copyright purposes.
 
-* Aleksandr Kuperman <aleksandr.kuperman@valory.xyz> [kupermind](https://github.com/kupermind)
-* David Minarsch <david.minarsch@googlemail.com> [DavidMinarsch](https://github.com/DavidMinarsch)
+* Akeksandr Kuperman <aleksandr.kuperman@valory.xyz> [Kupermind](https://github.com/kupermind)
+* Andrey Lebedev <andrey.lebedev@valory.xyz> [77ph](https://github.com/77ph)
+* David Minarsch <davidm@valory.xyz> [DavidMinarsch](https://github.com/DavidMinarsch)
+* Mariapia Moscatiello <mariapia.moscatiello@valory.xyz> [MariapiaMoscatiello](https://github.com/mariapiamo)
