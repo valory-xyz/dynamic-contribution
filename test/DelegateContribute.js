@@ -22,8 +22,8 @@ describe("DelegateContribute", function () {
         signers = await ethers.getSigners();
 
         // Setup mock balances and votes before testing delegation
-		await wveOLASMock.setBalance(signers[1].address, 100); // Set balance for the delegator
-		await wveOLASMock.setVotes(signers[1].address, 50); // Set votes for the delegator
+        await wveOLASMock.setBalance(signers[1].address, 100); // Set balance for the delegator
+        await wveOLASMock.setVotes(signers[1].address, 50); // Set votes for the delegator
         await wveOLASMock.setBalance(signers[2].address, 100); // Set balance for the delegator
         await wveOLASMock.setVotes(signers[2].address, 50); // Set votes for the delegator
     });
@@ -86,37 +86,37 @@ describe("DelegateContribute", function () {
         });
 
         it("Delegatee lists are correctly managed", async function () {
-		    const [deployer, delegatorOne, delegatorTwo, delegateeOne, delegateeTwo] = signers;
+            const [deployer, delegatorOne, delegatorTwo, delegateeOne, delegateeTwo] = signers;
 
-		    // Initially, delegate from two accounts to the same delegatee
-		    await delegateContribute.connect(delegatorOne).delegate(delegatorOne.address, delegateeOne.address);
+            // Initially, delegate from two accounts to the same delegatee
+            await delegateContribute.connect(delegatorOne).delegate(delegatorOne.address, delegateeOne.address);
             let thing = await delegateContribute.mapDelegation(delegatorOne.address);
-		    await delegateContribute.connect(delegatorTwo).delegate(delegatorTwo.address, delegateeOne.address);
+            await delegateContribute.connect(delegatorTwo).delegate(delegatorTwo.address, delegateeOne.address);
 
-		    // Check delegateeOne's list contains both delegators
-		    let delegateeOneList = await delegateContribute.getDelegatorList(delegateeOne.address);
-		    expect(delegateeOneList).to.include(delegatorOne.address);
-		    expect(delegateeOneList).to.include(delegatorTwo.address);
-		    
-		    // Redelegate from delegatorOne to another delegatee
-		    await delegateContribute.connect(delegatorOne).delegate(delegatorOne.address, delegateeTwo.address);
+            // Check delegateeOne's list contains both delegators
+            let delegateeOneList = await delegateContribute.getDelegatorList(delegateeOne.address);
+            expect(delegateeOneList).to.include(delegatorOne.address);
+            expect(delegateeOneList).to.include(delegatorTwo.address);
+            
+            // Redelegate from delegatorOne to another delegatee
+            await delegateContribute.connect(delegatorOne).delegate(delegatorOne.address, delegateeTwo.address);
 
-		    // Check delegateeOne's list no longer contains delegatorOne but still contains delegatorTwo
-		    delegateeOneList = await delegateContribute.getDelegatorList(delegateeOne.address);
-		    expect(delegateeOneList).to.not.include(delegatorOne.address);
-		    expect(delegateeOneList).to.include(delegatorTwo.address);
+            // Check delegateeOne's list no longer contains delegatorOne but still contains delegatorTwo
+            delegateeOneList = await delegateContribute.getDelegatorList(delegateeOne.address);
+            expect(delegateeOneList).to.not.include(delegatorOne.address);
+            expect(delegateeOneList).to.include(delegatorTwo.address);
 
-		    // Check delegateeTwo's list now contains delegatorOne
-		    const delegateeTwoList = await delegateContribute.getDelegatorList(delegateeTwo.address);
-		    expect(delegateeTwoList).to.include(delegatorOne.address);
+            // Check delegateeTwo's list now contains delegatorOne
+            const delegateeTwoList = await delegateContribute.getDelegatorList(delegateeTwo.address);
+            expect(delegateeTwoList).to.include(delegatorOne.address);
 
-		    // Undelegate delegatorTwo by delegating to the zero address
-		    await delegateContribute.connect(delegatorTwo).delegate(delegatorTwo.address, ethers.constants.AddressZero);
+            // Undelegate delegatorTwo by delegating to the zero address
+            await delegateContribute.connect(delegatorTwo).delegate(delegatorTwo.address, ethers.constants.AddressZero);
 
-		    // Check delegateeOne's list no longer contains delegatorTwo
-		    delegateeOneList = await delegateContribute.getDelegatorList(delegateeOne.address);
-		    expect(delegateeOneList).to.not.include(delegatorTwo.address);
-		});
+            // Check delegateeOne's list no longer contains delegatorTwo
+            delegateeOneList = await delegateContribute.getDelegatorList(delegateeOne.address);
+            expect(delegateeOneList).to.not.include(delegatorTwo.address);
+        });
 
         // Add more tests as needed for edge cases and error conditions
     });
