@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.23;
 
 import "../lib/solmate/src/tokens/ERC721.sol";
 import "../lib/solmate/src/utils/LibString.sol";
