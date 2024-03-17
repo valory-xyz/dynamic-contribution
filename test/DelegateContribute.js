@@ -118,6 +118,16 @@ describe("DelegateContribute", function () {
             expect(delegateeOneList).to.not.include(delegatorTwo.address);
         });
 
+        it("should revert with NoBalance error when delegator has no balance", async function () {
+            const [delegator, delegatee] = signers;
+
+            // Ensure the delegator has zero balance in the mock
+            await wveOLASMock.setBalance(delegator.address, 0);
+
+            // Attempt to delegate and expect a revert with the NoBalance error
+            await expect(delegateContribute.connect(delegator).delegate(delegator.address, delegatee.address)).to.be.revertedWith("NoBalance");
+        });
+
         // Add more tests as needed for edge cases and error conditions
     });
 
