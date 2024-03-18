@@ -88,6 +88,7 @@ contract DelegateContribute {
     }
 
     /// @dev Checks for the votingPower of a delegatee.
+    /// @notice implicitly handles no-delegation as self-delegation.
     /// @param delegatee Delegatee address.
     /// @return totalVotingPower total voting power of delegatee.
     function votingPower(address delegatee) external view returns (uint256 totalVotingPower) {

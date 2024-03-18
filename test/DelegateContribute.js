@@ -71,6 +71,14 @@ describe("DelegateContribute", function () {
             expect(await delegateContribute.mapDelegation(delegator.address)).to.equal(zeroAddress);
         });
 
+        it("Voting power calculation without delegation", async function () {
+            const delegator = signers[1];
+
+            // Check voting power
+            const totalVotingPower = await delegateContribute.votingPower(delegator.address);
+            expect(totalVotingPower).to.equal(50);
+        });
+
         it("Voting power calculation after delegation", async function () {
             const delegator = signers[1];
             const delegatee = signers[2];
