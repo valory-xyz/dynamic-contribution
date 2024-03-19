@@ -168,7 +168,7 @@ describe("DelegateContribute", function () {
             await wveOLASMock.setBalance(delegator.address, 100);
 
             await expect(delegateContribute.connect(delegator).delegate(delegatee.address))
-                .to.emit(delegateContribute, 'Delegation')
+                .to.emit(delegateContribute, "Delegation")
                 .withArgs(delegator.address, delegatee.address);
         });
 
