@@ -21,7 +21,12 @@ error NoBalance(address delegator);
 /// @param delegator provided delegator address.
 error NoSelfDelegation(address delegator);
 
-/// @title DynamicContribution - Ownable smart contract for minting ERC721 tokens
+/// @dev Already delegated to same delegatee.
+/// @param delegator provided delegator address.
+/// @param delegatee provided delegatee address.
+error AlreadyDelegatedToSameDelegatee(address delegator, address delegatee);
+
+/// @title DelegateContribute - Governance free contract for delegating wveOLAS voting power
 contract DelegateContribute {
 
     /// @dev Delegation.
@@ -54,6 +59,9 @@ contract DelegateContribute {
         address delegator = msg.sender;
         if (delegator == delegatee) {
             revert NoSelfDelegation(delegator);
+        }
+        if (mapDelegation[delegator] == delegatee) {
+            revert AlreadyDelegatedToSameDelegatee(delegator, delegatee);
         }
         uint256 balanceOf = IWVEOLAS(wveOLAS).balanceOf(delegator);
         if (balanceOf == 0) {
@@ -88,11 +96,13 @@ contract DelegateContribute {
     }
 
     /// @dev Checks for the votingPower of a delegatee.
-    /// @notice implicitly handles no-delegation as self-delegation.
+    /// @notice the votingPower includes the delegatee's own voting power, unless delegated.
     /// @param delegatee Delegatee address.
     /// @return totalVotingPower total voting power of delegatee.
     function votingPower(address delegatee) external view returns (uint256 totalVotingPower) {
-        totalVotingPower += IWVEOLAS(wveOLAS).getVotes(delegatee);
+        if (mapDelegation[delegatee] == address(0)) {
+            totalVotingPower += IWVEOLAS(wveOLAS).getVotes(delegatee);
+        }
         address[] memory delegators = delegatorLists[delegatee];
         for (uint i = 0; i < delegators.length; i++) {
             totalVotingPower += IWVEOLAS(wveOLAS).getVotes(delegators[i]);
