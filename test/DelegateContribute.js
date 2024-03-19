@@ -71,8 +71,13 @@ describe("DelegateContribute", function () {
 
             // Check undelegation
             expect(await delegateContribute.mapDelegation(delegator.address)).to.equal(zeroAddress);
+
+            // Check that the delegator is no longer in the delegatee's list
+            const delegatorList = await delegateContribute.getDelegatorList(delegatee.address);
+            expect(delegatorList).to.not.include(delegator.address);
         });
 
+        
         it("Voting power calculation without delegation", async function () {
             const delegator = signers[1];
 

@@ -60,7 +60,8 @@ contract DelegateContribute {
         if (delegator == delegatee) {
             revert NoSelfDelegation(delegator);
         }
-        if (mapDelegation[delegator] == delegatee) {
+        address currentDelegatee = mapDelegation[delegator];
+        if (currentDelegatee == delegatee) {
             revert AlreadyDelegatedToSameDelegatee(delegator, delegatee);
         }
         uint256 balanceOf = IWVEOLAS(wveOLAS).balanceOf(delegator);
@@ -69,8 +70,7 @@ contract DelegateContribute {
         }
 
         // Remove from old delegatee if applicable
-        address currentDelegatee = mapDelegation[delegator];
-        if(currentDelegatee != address(0) && currentDelegatee != delegatee) {
+        if(currentDelegatee != address(0)) {
             uint256 index = delegatorIndex[currentDelegatee][delegator];
 
             // Adjust index since it's stored +1
@@ -88,9 +88,11 @@ contract DelegateContribute {
 
         mapDelegation[delegator] = delegatee;
 
-        delegatorLists[delegatee].push(delegator);
-        // Store the index of the new delegator, +1 to differentiate from default value
-        delegatorIndex[delegatee][delegator] = delegatorLists[delegatee].length;
+        if(delegatee != address(0)) {
+            delegatorLists[delegatee].push(delegator);
+            // Store the index of the new delegator, +1 to differentiate from default value
+            delegatorIndex[delegatee][delegator] = delegatorLists[delegatee].length;
+        }
 
         emit Delegation(delegator, delegatee);
     }
