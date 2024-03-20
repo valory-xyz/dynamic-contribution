@@ -40,7 +40,7 @@ module.exports = {
         sepolia: {
             url: "https://eth-sepolia.g.alchemy.com/v2/" + ALCHEMY_API_KEY_SEPOLIA,
             accounts: accounts,
-            chainId: 11155111,
+            chainId: 11155111
         },
         hardhat: {
             allowUnlimitedContractSize: true

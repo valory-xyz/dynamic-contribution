@@ -5,29 +5,29 @@ const { ethers } = require("hardhat");
 
 describe("DelegateContribute", function () {
     let delegateContribute;
-    let wveOLASMock;
+    let veOLASMock;
     let signers;
 
     beforeEach(async function () {
         // Deploy the mock for IWVEOLAS interface
-        const WVEOLASMock = await ethers.getContractFactory("WVEOLASMock");
-        wveOLASMock = await WVEOLASMock.deploy();
-        await wveOLASMock.deployed();
+        const VEOLASMock = await ethers.getContractFactory("VEOLASMock");
+        veOLASMock = await VEOLASMock.deploy();
+        await veOLASMock.deployed();
 
         // Deploy the DelegateContribute contract
         const DelegateContribute = await ethers.getContractFactory("DelegateContribute");
-        delegateContribute = await DelegateContribute.deploy(wveOLASMock.address);
+        delegateContribute = await DelegateContribute.deploy(veOLASMock.address);
         await delegateContribute.deployed();
 
         signers = await ethers.getSigners();
 
         // Setup mock balances and votes before testing delegation
-        await wveOLASMock.setBalance(signers[1].address, 100); // Set balance for the delegator
-        await wveOLASMock.setVotes(signers[1].address, 50); // Set votes for the delegator
-        await wveOLASMock.setBalance(signers[2].address, 200); // Set balance for the delegator
-        await wveOLASMock.setVotes(signers[2].address, 100); // Set votes for the delegator
-        await wveOLASMock.setBalance(signers[3].address, 300); // Set balance for the delegator
-        await wveOLASMock.setVotes(signers[3].address, 150); // Set votes for the delegator
+        await veOLASMock.setBalance(signers[1].address, 100); // Set balance for the delegator
+        await veOLASMock.setVotes(signers[1].address, 50); // Set votes for the delegator
+        await veOLASMock.setBalance(signers[2].address, 200); // Set balance for the delegator
+        await veOLASMock.setVotes(signers[2].address, 100); // Set votes for the delegator
+        await veOLASMock.setBalance(signers[3].address, 300); // Set balance for the delegator
+        await veOLASMock.setVotes(signers[3].address, 150); // Set votes for the delegator
     });
 
     context("Delegation functionality", async function () {
@@ -135,7 +135,7 @@ describe("DelegateContribute", function () {
             const [delegator, delegatee] = signers;
 
             // Ensure the delegator has zero balance in the mock
-            await wveOLASMock.setBalance(delegator.address, 0);
+            await veOLASMock.setBalance(delegator.address, 0);
 
             // Attempt to delegate and expect a revert with the NoBalance error
             await expect(delegateContribute.connect(delegator).delegate(delegatee.address)).to.be.revertedWith("NoBalance");
@@ -153,7 +153,7 @@ describe("DelegateContribute", function () {
             const [delegator, delegatee] = signers;
 
             // Set a non-zero balance for the delegator in the mock contract to bypass the NoBalance check
-            await wveOLASMock.setBalance(delegator.address, ethers.utils.parseEther("1"));
+            await veOLASMock.setBalance(delegator.address, ethers.utils.parseEther("1"));
 
             // Delegate once from the delegator to the delegatee
             await delegateContribute.connect(delegator).delegate(delegatee.address);
@@ -165,7 +165,7 @@ describe("DelegateContribute", function () {
 
         it("should emit a Delegation event upon successful delegation", async function () {
             const [delegator, delegatee] = signers;
-            await wveOLASMock.setBalance(delegator.address, 100);
+            await veOLASMock.setBalance(delegator.address, 100);
 
             await expect(delegateContribute.connect(delegator).delegate(delegatee.address))
                 .to.emit(delegateContribute, "Delegation")
@@ -176,7 +176,7 @@ describe("DelegateContribute", function () {
             const [delegator, delegatee1, delegatee2, delegatee3] = signers;
 
             // Set balance for the delegator
-            await wveOLASMock.setBalance(delegator.address, 100);
+            await veOLASMock.setBalance(delegator.address, 100);
 
             // Delegate to the first delegatee
             await delegateContribute.connect(delegator).delegate(delegatee1.address);
@@ -216,7 +216,7 @@ describe("DelegateContribute", function () {
             // Set balance and votes for each delegator and delegate to the same delegatee
             for (let i = 1; i <= numDelegators; i++) {
                 const delegator = signers[i];
-                await wveOLASMock.setBalance(delegator.address, 100);
+                await veOLASMock.setBalance(delegator.address, 100);
                 await delegateContribute.connect(delegator).delegate(delegatee.address);
             }
 
