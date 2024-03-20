@@ -3,7 +3,7 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
-describe.only("DynamicContribution", function () {
+describe("DynamicContribution", function () {
     let dynamicContribution;
     let reentrancyAttacker;
     let signers;
