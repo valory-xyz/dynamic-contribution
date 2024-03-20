@@ -26,32 +26,32 @@ async function main() {
     console.log("EOA is:", deployer);
 
     // Transaction signing and execution
-    console.log("15. EOA to deploy DynamicContribution");
+    console.log("1. EOA to deploy DynamicContribution");
     const DynamicContribution = await ethers.getContractFactory("DynamicContribution");
     console.log("You are signing the following transaction: DynamicContribution.connect(EOA).deploy()");
     const dynamicContribution = await DynamicContribution.connect(EOA).deploy(parsedData.dynamicContributionName,
         parsedData.dynamicContributionSymbol, parsedData.dynamicContributionBaseURI);
     const result = await dynamicContribution.deployed();
 
-    // Wait for a minute on goerli
-    if (providerName == "goerli") {
-        await new Promise(r => setTimeout(r, 60000));
-    }
-
     // Transaction details
     console.log("Contract deployment: DynamicContribution");
     console.log("Contract address:", dynamicContribution.address);
     console.log("Transaction:", result.deployTransaction.hash);
+
+    // Wait for half a minute on sepolia
+    if (providerName == "sepolia") {
+        await new Promise(r => setTimeout(r, 30000));
+    }
+
+    // Writing updated parameters back to the JSON file
+    parsedData.dynamicContributionAddress = dynamicContribution.address;
+    fs.writeFileSync(globalsFile, JSON.stringify(parsedData));
 
     // Contract verification
     if (parsedData.contractVerification) {
         const execSync = require("child_process").execSync;
         execSync("npx hardhat verify --constructor-args scripts/deployment/verify_dynamic_contribution.js --network " + providerName + " " + dynamicContribution.address, { encoding: "utf-8" });
     }
-
-    // Writing updated parameters back to the JSON file
-    parsedData.dynamicContributionAddress = dynamicContribution.address;
-    fs.writeFileSync(globalsFile, JSON.stringify(parsedData));
 }
 
 main()

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.23;
 
-interface IWVEOLAS {
+interface IVEOLAS {
     /// @dev Gets the account balance in native token.
     /// @param account Account address.
     /// @return balance Account balance.
@@ -26,7 +26,7 @@ error NoSelfDelegation(address delegator);
 /// @param delegatee provided delegatee address.
 error AlreadyDelegatedToSameDelegatee(address delegator, address delegatee);
 
-/// @title DelegateContribute - Governance free contract for delegating wveOLAS voting power
+/// @title DelegateContribute - Governance free contract for delegating veOLAS voting power
 contract DelegateContribute {
 
     /// @dev Delegation.
@@ -34,8 +34,8 @@ contract DelegateContribute {
     /// @param delegatee provided delegatee.
     event Delegation(address indexed delegator, address indexed delegatee);
 
-    // wveOLAS address
-    address immutable wveOLAS;
+    // veOLAS address
+    address public immutable veOLAS;
 
     // Mapping of account address => address
     mapping(address => address) public mapDelegation;
@@ -47,10 +47,10 @@ contract DelegateContribute {
     mapping(address => mapping(address => uint256)) private delegatorIndex;
 
     /// @dev DynamicContribution constructor.
-    /// @param _wveOLAS wveOLAS contract address.
-    constructor(address _wveOLAS)
+    /// @param _veOLAS veOLAS contract address.
+    constructor(address _veOLAS)
     {
-        wveOLAS = _wveOLAS;
+        veOLAS = _veOLAS;
     }
 
     /// @dev Delegates Contribute voting power to an address.
@@ -64,7 +64,7 @@ contract DelegateContribute {
         if (currentDelegatee == delegatee) {
             revert AlreadyDelegatedToSameDelegatee(delegator, delegatee);
         }
-        uint256 balanceOf = IWVEOLAS(wveOLAS).balanceOf(delegator);
+        uint256 balanceOf = IVEOLAS(veOLAS).balanceOf(delegator);
         if (balanceOf == 0) {
             revert NoBalance(delegator);
         }
@@ -103,11 +103,11 @@ contract DelegateContribute {
     /// @return totalVotingPower total voting power of delegatee.
     function votingPower(address delegatee) external view returns (uint256 totalVotingPower) {
         if (mapDelegation[delegatee] == address(0)) {
-            totalVotingPower += IWVEOLAS(wveOLAS).getVotes(delegatee);
+            totalVotingPower += IVEOLAS(veOLAS).getVotes(delegatee);
         }
         address[] memory delegators = delegatorLists[delegatee];
         for (uint i = 0; i < delegators.length; i++) {
-            totalVotingPower += IWVEOLAS(wveOLAS).getVotes(delegators[i]);
+            totalVotingPower += IVEOLAS(veOLAS).getVotes(delegators[i]);
         }
     }
 
