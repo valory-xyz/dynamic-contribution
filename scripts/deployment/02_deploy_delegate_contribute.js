@@ -11,7 +11,6 @@ async function main() {
     const useLedger = parsedData.useLedger;
     const derivationPath = parsedData.derivationPath;
     const providerName = parsedData.providerName;
-    const gasPriceInGwei = parsedData.gasPriceInGwei;
     let EOA;
 
     const provider = await ethers.providers.getDefaultProvider(providerName);
@@ -27,32 +26,31 @@ async function main() {
     console.log("EOA is:", deployer);
 
     // Transaction signing and execution
-    console.log("16. EOA to deploy DelegateContribute");
-    const gasPrice = ethers.utils.parseUnits(gasPriceInGwei, "gwei");
+    console.log("2. EOA to deploy DelegateContribute");
     const DelegateContribute = await ethers.getContractFactory("DelegateContribute");
     console.log("You are signing the following transaction: DelegateContribute.connect(EOA).deploy()");
-    const delegateContribute = await DelegateContribute.connect(EOA).deploy(parsedData.wveOLAS, { gasPrice });
+    const delegateContribute = await DelegateContribute.connect(EOA).deploy(parsedData.veOLASAddress);
     const result = await delegateContribute.deployed();
-
-    // Wait for a minute on goerli
-    if (providerName == "goerli") {
-        await new Promise(r => setTimeout(r, 60000));
-    }
 
     // Transaction details
     console.log("Contract deployment: DelegateContribute");
     console.log("Contract address:", delegateContribute.address);
     console.log("Transaction:", result.deployTransaction.hash);
 
-    // Contract verification
-    if (parsedData.contractVerification) {
-        const execSync = require("child_process").execSync;
-        execSync("npx hardhat verify --constructor-args scripts/deployment/verify_delegate_contribute.js --network " + providerName + " " + delegateContribute.address, { encoding: "utf-8" });
+    // Wait for half a minute on sepolia
+    if (providerName == "sepolia") {
+        await new Promise(r => setTimeout(r, 30000));
     }
 
     // Writing updated parameters back to the JSON file
     parsedData.delegateContributeAddress = delegateContribute.address;
     fs.writeFileSync(globalsFile, JSON.stringify(parsedData));
+
+    // Contract verification
+    if (parsedData.contractVerification) {
+        const execSync = require("child_process").execSync;
+        execSync("npx hardhat verify --constructor-args scripts/deployment/verify_delegate_contribute.js --network " + providerName + " " + delegateContribute.address, { encoding: "utf-8" });
+    }
 }
 
 main()
