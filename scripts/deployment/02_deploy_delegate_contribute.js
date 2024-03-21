@@ -29,7 +29,12 @@ async function main() {
     console.log("2. EOA to deploy DelegateContribute");
     const DelegateContribute = await ethers.getContractFactory("DelegateContribute");
     console.log("You are signing the following transaction: DelegateContribute.connect(EOA).deploy()");
-    const delegateContribute = await DelegateContribute.connect(EOA).deploy(parsedData.veOLASAddress);
+    const deploymentTransaction = DelegateContribute.getDeployTransaction(parsedData.veOLASAddress);
+    const estimatedGas = await ethers.provider.estimateGas(deploymentTransaction);
+    const bufferedGasEstimate = estimatedGas.mul(110).div(100)
+    const maxPriorityFeePerGas = ethers.utils.parseUnits("0.2", "gwei");
+    const maxFeePerGas = ethers.utils.parseUnits("35", "gwei");
+    const delegateContribute = await DelegateContribute.connect(EOA).deploy(parsedData.veOLASAddress, {gasLimit: bufferedGasEstimate, maxPriorityFeePerGas: maxPriorityFeePerGas, maxFeePerGas: maxFeePerGas});
     const result = await delegateContribute.deployed();
 
     // Transaction details
