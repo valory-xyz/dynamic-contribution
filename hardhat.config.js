@@ -8,17 +8,23 @@ require("hardhat-gas-reporter");
 require("hardhat-contract-sizer");
 require("@nomiclabs/hardhat-etherscan");
 
+const ALCHEMY_API_KEY_MAINNET = process.env.ALCHEMY_API_KEY_MAINNET;
+const ALCHEMY_API_KEY_SEPOLIA = process.env.ALCHEMY_API_KEY_SEPOLIA;
+let TESTNET_MNEMONIC = process.env.TESTNET_MNEMONIC;
+
 const accounts = {
-    // Generated with bip39
-    mnemonic: "velvet deliver grief train result fortune travel voice over subject subject staff nominee bone name",
-    accountsBalance: "100000000000000000000000000",
+    mnemonic: TESTNET_MNEMONIC,
+    path: "m/44'/60'/0'/0",
+    initialIndex: 0,
+    count: 20,
 };
 
-const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
-let GOERLI_MNEMONIC = process.env.GOERLI_MNEMONIC;
-if (!GOERLI_MNEMONIC) {
-    GOERLI_MNEMONIC = accounts.mnemonic;
+if (!TESTNET_MNEMONIC) {
+    // Generated with bip39
+    accounts.mnemonic = "velvet deliver grief train result fortune travel voice over subject subject staff nominee bone name";
+    accounts.accountsBalance = "100000000000000000000000000";
 }
+
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
 
 module.exports = {
@@ -27,19 +33,14 @@ module.exports = {
             url: "http://localhost:8545",
         },
         mainnet: {
-            url: "https://eth-mainnet.g.alchemy.com/v2/" + ALCHEMY_API_KEY,
-            chainId: 1,
+            url: "https://eth-mainnet.g.alchemy.com/v2/" + ALCHEMY_API_KEY_MAINNET,
+            accounts: accounts,
+            chainId: 1
         },
-        goerli: {
-            url: "https://eth-goerli.alchemyapi.io/v2/" + ALCHEMY_API_KEY,
-            chainId: 5,
-            accounts: {
-                mnemonic: GOERLI_MNEMONIC,
-                path: "m/44'/60'/0'/0",
-                initialIndex: 0,
-                count: 20,
-                passphrase: "",
-            },
+        sepolia: {
+            url: "https://eth-sepolia.g.alchemy.com/v2/" + ALCHEMY_API_KEY_SEPOLIA,
+            accounts: accounts,
+            chainId: 11155111
         },
         hardhat: {
             allowUnlimitedContractSize: true

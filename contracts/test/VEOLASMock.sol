@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.23;
 
-// Mock contract for IWVEOLAS interface
-contract WVEOLASMock {
+// Mock contract for IVEOLAS interface
+contract VEOLASMock {
     mapping(address => uint256) private _balances;
     mapping(address => uint256) private _votes;
 
