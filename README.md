@@ -8,7 +8,7 @@ This repository contains the Autonolas dynamic contribution contracts.
 ### Prerequisites
 - Ensure you pull and initialise the submodules `git submodule update --init --recursive`
 - This repository follows the standard [`Hardhat`](https://hardhat.org/tutorial/) development process.
-- The code is written on Solidity `0.8.17`.
+- The code is written on Solidity `0.8.23`.
 - The standard versions of Node.js along with Yarn are required to proceed further (confirmed to work with Yarn `1.22.19` and npx/npm `8.19.2` and node `v18.6.0`).
 
 ### Install the dependencies
